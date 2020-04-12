@@ -170,7 +170,7 @@ Bool Function UnequipGear(Form[] List, Form[] ListL) global
 	Bool AmnoFound = False
 	Int n = ArrayTotalCountForm(SMF._SMF_AmmoListArray)
 
-	While (n >= 0)
+	While (n > 0)
 		Amno = (SMF._SMF_AmmoListArray[n] as Form)
 		If PlayerRef.IsEquipped(Amno)
 			AmnoFound = true
@@ -279,12 +279,12 @@ Bool Function EquipGear(Form[] List, Form[] ListL) global
 	If SMF.GeneralDebug													;Equip everything else in the reverse order we stored it (including right hand weapons)
 		Debug.Notification("ArrayTotalCountForm:" + i)
 	EndIF
-	While (i >= 0)
+	While (i > 0)
+		i -= 1
 		Form ListItem = List[i]
 		If (ListItem)
 			PlayerRef.EquipItemEx(ListItem, 0, false, false)
 		EndIf
-		i -= 1
 	EndWhile
 	ArrayClearForm(List)																	;Clear this list for the next time we switch outfits
 	;--------------------------------------------------------------

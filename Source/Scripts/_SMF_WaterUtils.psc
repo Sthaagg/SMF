@@ -32,7 +32,7 @@ bool function IsCloseToWaterfall(Actor akActor) global;; Water falldetection is 
     Bool Found
     
     Int I3 = SMF.iWfallAmbArray
-    While I3 >= 0
+    While I3 > 0
         ObjectReference ClosestWFallAmb = Game.FindClosestReferenceOfTypeFromRef(SMF._SMF_WFallAmbArray[I3] as form, akActor, 200.0)
         If ClosestWFallAmb
             I3 = 0
@@ -49,7 +49,7 @@ bool function IsCloseToWaterfall(Actor akActor) global;; Water falldetection is 
     EndIf
 
     Int I2 = SMF.iWfallBtomArray
-    While I2 >= 0
+    While I2 > 0
         ObjectReference ClosestWFallBtom = Game.FindClosestReferenceOfTypeFromRef(SMF._SMF_WFallBtomArray[I2] as form, akActor, 200.0)
         If ClosestWFallBtom
             I2 = 0
@@ -63,7 +63,7 @@ bool function IsCloseToWaterfall(Actor akActor) global;; Water falldetection is 
     EndWhile
 
     Int I = SMF.iWfallTopArray
-    While I >= 0
+    While I > 0
         ObjectReference ClosestWFallTop = Game.FindClosestReferenceOfTypeFromRef(SMF._SMF_WFallTopArray[I] as form, akActor, 200.0)
         If ClosestWFallTop
             I = 0

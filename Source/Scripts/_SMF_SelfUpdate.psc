@@ -51,7 +51,7 @@ Function Maintenance()
          ;------Filling Array-------------------------------------------
         Debug.Notification("Enabling Water Support")
         Int I1 = SMF._SMF_WFallAmb.Getsize()
-        While I1 >= 0
+        While I1 > 0
             Form WfallForm = SMF._SMF_WFallAmb.GetAt(I1) as Form
     
             Bool AddingForm = ArrayAddForm(SMF._SMF_WFallAmbArray, WfallForm)
@@ -63,7 +63,7 @@ Function Maintenance()
             EndIf
         EndWhile
         Int I2 = SMF._SMF_WFallTop.Getsize()
-        While I2 >= 0
+        While I2 > 0
             Form WfallForm = SMF._SMF_WFallTop.GetAt(I2) as Form
             Bool AddingForm = ArrayAddForm(SMF._SMF_WFallTopArray, WfallForm)
             If Addingform
@@ -75,7 +75,7 @@ Function Maintenance()
         EndWhile
         
         Int I3 = SMF._SMF_WFallBtom.Getsize()
-        While I3 >= 0
+        While I3 > 0
             Form WfallForm = SMF._SMF_WFallBtom.GetAt(I3) as Form
     
             Bool AddingForm = ArrayAddForm(SMF._SMF_WFallBtomArray, WfallForm)
@@ -91,7 +91,7 @@ Function Maintenance()
         SMF._SMF_DLC1Detection = 0
         SMF._SMF_DLC2Detection = 0
         Int I4 = SMF._SMF_AmmoList.Getsize()
-        While I4 >= 0
+        While I4 > 0
             Form AmnoForm = SMF._SMF_AmmoList.GetAt(I4) as Form
     
             Bool AddingForm = ArrayAddForm(SMF._SMF_AmmoListArray, AmnoForm)
