@@ -4,6 +4,21 @@ _SMF_API function GetAPI() global
 	return (Game.GetFormFromFile(0xD61, "SMF.esl") as Quest) as _SMF_API
 endFunction
 
+Function DebugInfo(String text,Int type = 1 ) global; Type 1 = notification (default mode), Type 2 = Trace
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return none
+    endif
+    If SMF.GeneralDebug 
+        If type == 1
+            Debug.notification("[SMF] " + text)
+        ElseIf Type == 2
+            Debug.trace("[SMF] " + text)
+        Endif
+    EndIf
+EndFunction
+
 Function Closemenu() global
 ;Convenient function, Close menu properly
     Game.DisablePlayerControls(False, False, False, False, False, True)	; Close menu
@@ -66,16 +81,12 @@ bool Function ActorIsNearPlayer(Actor akActor) global
 			if (SMF.PlayerREF.GetDistance(akActor) > 512)
 				return false
 			else
-				If SMF.GeneralDebug
-					Debug.Notification("akActor distance: " + SMF.PlayerREF.GetDistance(akActor))
-				EndIf
+				DebugInfo("akActor distance: " + SMF.PlayerREF.GetDistance(akActor),2)
                 return true
 			endif
 		endif
 	else
-		If SMF.GeneralDebug
-			Debug.Notification("akActor distance: " + SMF.PlayerREF.GetDistance(akActor))
-		EndIf
+		DebugInfo("akActor distance: " + SMF.PlayerREF.GetDistance(akActor),2)
 		return true
 	endif
 endFunction

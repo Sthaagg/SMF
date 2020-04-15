@@ -32,13 +32,13 @@ The amnolist use a hardcoded array to share it with other mods wich uses this sc
     If (SMF._SMF_DLC1Detection == 0)
         If (Game.GetModByName("Dawnguard.esm") != 255)
             AddDawnguardAmmo()
-            Debug.Notification("Dawnguard Ammo found. Adding to Memory.")
+            DebugInfo("Dawnguard Ammo found. Adding to Memory.")
         EndIf
 	EndIf
     If (SMF._SMF_DLC2Detection == 0)
         If (Game.GetModByName("Dragonborn.esm") != 255)
             AddDragonbornAmmo()
-            Debug.Notification("Dragonborn Ammo found. Adding to Memory.")
+            DebugInfo("Dragonborn Ammo found. Adding to Memory.")
         EndIf
     EndIf
 	;Check camera mode
@@ -61,15 +61,11 @@ The amnolist use a hardcoded array to share it with other mods wich uses this sc
 	
     If !Unequiped
 		Unequiped = UnequipGear(ListEquip,ListL)
-		If SMF.GeneralDebug
-			Debug.Notification("Unequip Mode")
-		EndIf
+		DebugInfo("Unequip Mode",2)
     Else
 		Unequiped = EquipGear(ListEquip,ListL)
 		Utility.Wait(1.0)
-		If SMF.GeneralDebug
-			Debug.Notification("Equip Mode")
-		EndIf
+		DebugInfo("Equip Mode",2)
 	EndIF
 
 	;Utility.Wait(1.500000)
@@ -86,7 +82,7 @@ The amnolist use a hardcoded array to share it with other mods wich uses this sc
 	
 	return Unequiped
 
-	Debug.Notification("Player regain control")
+	DebugInfo("Player regain control",2)
 EndFunction
 
 Function AddDawnguardAmmo() global
@@ -190,7 +186,7 @@ Bool Function UnequipGear(Form[] List, Form[] ListL) global
 				Int FormCount = ArrayHasForm(SMF._SMF_AmmoListArray,hotkeyItem)
 				If (FormCount == -1)				;If we found unknown ammo, remember it for the future
 					ArrayAddForm(SMF._SMF_AmmoListArray,hotkeyItem)
-					Debug.Notification("New Ammo found in Hotkeys. Adding to Memory.")
+					DebugInfo("New Ammo found in Hotkeys. Adding to Memory.")
 				EndIf
 				If (PlayerRef.IsEquipped(hotkeyItem))									;If we actually found the equipped ammo, proceed as usual
 					ArrayAddForm(List,hotkeyItem)
@@ -204,7 +200,7 @@ Bool Function UnequipGear(Form[] List, Form[] ListL) global
 			Debug.SendAnimationEvent(PlayerRef, "IdleBracedPain")						;We use this to interrupt a non-interruptable animation (IdleMQ203EsbernBookEnterInstant)
 			Debug.SendAnimationEvent(PlayerRef, "IdleStop")
 			Debug.SendAnimationEvent(PlayerRef, "IdleStudy")							;This might take a while so better play an animation as distraction
-			Debug.Notification("New Ammo detected. Searching inventory. Please Wait.")
+			DebugInfo("New Ammo detected. Searching inventory. Please Wait.")
 			k = PlayerRef.GetNumItems()
 			While k > 0																;Check all items in the inventory for unknown ammo
 				k -= 1
@@ -213,7 +209,7 @@ Bool Function UnequipGear(Form[] List, Form[] ListL) global
 					Int FormCount = ArrayHasForm(SMF._SMF_AmmoListArray,inventoryItem)
 					If (FormCount == -1)
 						ArrayAddForm(SMF._SMF_AmmoListArray,inventoryItem)
-						Debug.Notification("New Ammo found in Inventory. Adding to Memory.")
+						DebugInfo("New Ammo found in Inventory. Adding to Memory.")
 					EndIf
 					If (PlayerRef.IsEquipped(inventoryItem))							;If we actually found the equipped ammo, proceed as usual
 						ArrayAddForm(List,inventoryItem)
@@ -221,7 +217,7 @@ Bool Function UnequipGear(Form[] List, Form[] ListL) global
 					EndIf
 				EndIf
 			EndWhile
-			Debug.Notification("Search complete.")
+			DebugInfo("Search complete.")
 		EndIf
 
 	EndIf
@@ -230,32 +226,24 @@ Bool Function UnequipGear(Form[] List, Form[] ListL) global
 	If (RightWeapon as Weapon)
 		ArrayAddForm(List,RightWeapon)
         PlayerRef.UnequipItem(RightWeapon, false, true)
-        If SMF.GeneralDebug
-            Debug.Notification("Primary Right Weapon saved")
-        EndIf
+		DebugInfo("Primary Right Weapon saved")
 	EndIf
 	
 	RightWeapon = PlayerRef.GetEquippedObject(1)										;We repeat this step again, since unequipping a two-handed weapon can equip a previously used one-handed weapon
 	If (RightWeapon && !(RightWeapon as Spell))
 		ArrayAddForm(List,RightWeapon)
         PlayerRef.UnequipItem(RightWeapon, false, true)
-        If SMF.GeneralDebug
-            Debug.Notification("Secondary Right Weapon/Item saved")
-        EndIf
+		DebugInfo("Secondary Right Weapon/Item saved")
 	EndIf
 		;-------Left-Hand-Weapon/Shield--------------------------------
 	Form LeftWeapon = PlayerRef.GetEquippedObject(0)								;We process the left hand last, since unequipping a two-handed weapon can equip a previously used one-handed weapon/shield
 	If (LeftWeapon && !(LeftWeapon as Spell))
 		ArrayAddForm(ListL,LeftWeapon)
         PlayerRef.UnequipItem(LeftWeapon, false, true)
-        If SMF.GeneralDebug
-            Debug.Notification("Left Weapon/Shield/Item saved")
-        EndIf
+		DebugInfo("Left Weapon/Shield/Item saved")
 	EndIf
-	If SMF.GeneralDebug
-		Debug.Notification("Equiped List: " + ArrayTotalCountForm(List))
-		Debug.Notification("Equiped left : " + ArrayTotalCountForm(ListL))
-	EndIf
+		DebugInfo("Equiped List: " + ArrayTotalCountForm(List),2)
+		DebugInfo("Equiped left : " + ArrayTotalCountForm(ListL),2)
 	return True
 EndFunction
 
@@ -276,9 +264,6 @@ Bool Function EquipGear(Form[] List, Form[] ListL) global
 	;--------------------------------------------------------------
 	;-------Rest---------------------------------------------------
 	Int i = ArrayTotalCountForm(List)
-	If SMF.GeneralDebug													;Equip everything else in the reverse order we stored it (including right hand weapons)
-		Debug.Notification("ArrayTotalCountForm:" + i)
-	EndIF
 	While (i > 0)
 		i -= 1
 		Form ListItem = List[i]

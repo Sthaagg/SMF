@@ -14,9 +14,7 @@ bool function IsCloseToWater(Actor akActor) global
     bool IsUnderWaterLevel = akActor.GetPositionZ() < waterLevel || waterLevel == 0.0
     ; Test if actor is standing in water (and not swimming)
     if (!akActor.IsSwimming() && (akActor.IsInInterior() || IsUnderWaterLevel) ); && IsInWater(akActor))
-        If SMF.GeneralDebug
-            debug.Notification("WaterClose")
-        EndIf
+        DebugInfo("WaterClose")
         return true
     endIf
     return false
@@ -36,9 +34,7 @@ bool function IsCloseToWaterfall(Actor akActor) global;; Water falldetection is 
         ObjectReference ClosestWFallAmb = Game.FindClosestReferenceOfTypeFromRef(SMF._SMF_WFallAmbArray[I3] as form, akActor, 200.0)
         If ClosestWFallAmb
             I3 = 0
-            If SMF.GeneralDebug
-                debug.Notification("Wfall Ambient:" + ClosestWFallAmb)
-            EndIf
+            DebugInfo("Wfall Ambient:" + ClosestWFallAmb,2)
             return true
         Else
             I3 -= 1
@@ -53,9 +49,7 @@ bool function IsCloseToWaterfall(Actor akActor) global;; Water falldetection is 
         ObjectReference ClosestWFallBtom = Game.FindClosestReferenceOfTypeFromRef(SMF._SMF_WFallBtomArray[I2] as form, akActor, 200.0)
         If ClosestWFallBtom
             I2 = 0
-            If SMF.GeneralDebug
-                debug.Notification("Wfall Bottom:" + ClosestWFallBtom)
-            EndIf
+            DebugInfo("Wfall Bottom:" + ClosestWFallBtom,2)
             return true
         Else
             I2 -= 1
@@ -67,9 +61,7 @@ bool function IsCloseToWaterfall(Actor akActor) global;; Water falldetection is 
         ObjectReference ClosestWFallTop = Game.FindClosestReferenceOfTypeFromRef(SMF._SMF_WFallTopArray[I] as form, akActor, 200.0)
         If ClosestWFallTop
             I = 0
-            If SMF.GeneralDebug
-                debug.Notification("Wfall Top:" + ClosestWFallTop)
-            EndIf
+            DebugInfo("Wfall Top:" + ClosestWFallTop,2)
             return true
         Else
             I -= 1
@@ -100,8 +92,8 @@ bool function IsInWater(Actor akActor) global
     Test.Delete()
     
     Game.EnablePlayerControls() ; Enable all controls
-    If result && SMF.GeneralDebug
-        debug.Notification("In Water")
+    If result
+        DebugInfo("In Water")
     EndIf
     return Result
 endFunction

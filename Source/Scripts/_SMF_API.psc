@@ -81,9 +81,3 @@ FormList Property _SMF_FurnitureSit Auto
 
 ;Activate Debug Mode for testing purpose
 Bool Property GeneralDebug  Auto
-
-import _SMF_ArrayUtils
-
-Event OnInit()
-
-EndEvent

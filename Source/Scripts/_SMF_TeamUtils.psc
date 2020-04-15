@@ -19,9 +19,7 @@ Function AutoDetectTeam(form[] ExlusionList) global
         return None
     endif  
     int idx  = SMF._SMF_AutoDetectTeam.GetNumAliases()
-    If SMF.GeneralDebug
-        debug.notification("idx = "+ idx); for testing purpose
-    EndIf
+    DebugInfo("idx = "+ idx); for testing purpose
 	While idx > 0
 		idx -= 1
 		ReferenceAlias nthAlias = SMF._SMF_AutoDetectTeam.GetNthAlias(idx) as ReferenceAlias
@@ -51,9 +49,7 @@ Function AddActortoTeamList(Actor teammate, Form[] ActorArray, Form[] ExlusionLi
         Elseif mode == 2
             ArrayAddForm(ExlusionList, teammate)
         EndIf
-        If SMF.GeneralDebug
-            debug.notification("teammate = "+ teammate); for testing purpose
-        EndIf    
+        DebugInfo("teammate = "+ teammate); for testing purpose
     EndIf
 EndFunction
 

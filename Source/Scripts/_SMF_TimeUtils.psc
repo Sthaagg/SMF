@@ -20,9 +20,7 @@ float function GetTimeStamp(int Unit) global
     Elseif unit == 2
         result = GetCurrentGameTime()
     Endif
-    If SMF.GeneralDebug
-        Debug.Notification("TimeStamp: " + result)
-    EndIf
+    DebugInfo("TimeStamp: " + result,2)
     return result
 EndFunction
 
@@ -74,9 +72,7 @@ Int Function CountTotalDaysSpent() Global
     Float GameDaysPassed
  
 	GameDaysPassed = GetCurrentGameTime()
-     If SMF.GeneralDebug
-        Debug.Notification("CountTotalDaysSpent: " + GameDaysPassed As Int)
-    EndIf
+    DebugInfo("CountTotalDaysSpent: " + GameDaysPassed As Int)
     Return GameDaysPassed As Int
 EndFunction
 
@@ -92,9 +88,7 @@ Int Function CountTotalhourSpent() global
     endif
     float GameHourPassed = GetCurrentGameTime()
 	GameHourPassed *= 24 ; Convert day to number of hours
-    If SMF.GeneralDebug
-        Debug.Notification("CountTotalhourSpent: "+  GameHourPassed as Int)
-    EndIf
+    DebugInfo("CountTotalhourSpent: "+  GameHourPassed as Int)
     Return GameHourPassed as Int
 EndFunction
 
@@ -110,9 +104,7 @@ Float Function GetCurrentGameTimeInHour() global
     endif
     float GameHourPassed = GetCurrentGameTime()
 	GameHourPassed *= 24 ; Convert day to number of hours
-    If SMF.GeneralDebug
-        Debug.Notification("CountTotalhourSpent: "+ GameHourPassed + "H")
-    EndIf
+    DebugInfo("CountTotalhourSpent: "+ GameHourPassed + "H")
     Return GameHourPassed
 EndFunction
 
@@ -130,9 +122,7 @@ Int Function GetCurrentDayHour() global
     float Time = GetCurrentGameTime()
 	Time -= Math.Floor(Time) ; Remove "previous in-game days passed" bit
 	Time *= 24 ; Convert from fraction of a day to number of hours
-    If SMF.GeneralDebug
-        Debug.Notification("GetCurrentDayHour: It is "+ Time as Int +" o'clock")
-    EndIf
+    DebugInfo("GetCurrentDayHour: It is "+ Time as Int +" o'clock")
     Return Time as Int
 EndFunction
 
@@ -194,9 +184,7 @@ Int Function GetCurrentMoonphase() Global
 	ElseIf PhaseTest < 22
 		Result = 6
 	EndIf
-    If SMF.GeneralDebug
-        Debug.Notification("GetCurrentMoonphase Result:" + result)
-    EndIf
+    DebugInfo("GetCurrentMoonphase Result:" + result)
     return result
 EndFunction
 
@@ -230,9 +218,7 @@ Int Function GetCurrentMoonSync() Global
 		GameDaysPassed += 1
 	EndIf
 	SyncTest = GameDaysPassed % 5
-    If SMF.GeneralDebug
-        Debug.Notification("GetCurrentMoonSync" + SyncTest)
-    EndIf
+    DebugInfo("GetCurrentMoonSync" + SyncTest)
     return SyncTest
 EndFunction
 
@@ -260,8 +246,6 @@ Int Function GetDayOfWeek() Global
     Int GameDaysPassed
  
 	GameDaysPassed = CountTotalDaysSpent()
-    If SMF.GeneralDebug
-        Debug.Notification("GetDayOfWeek" + GameDaysPassed % 7)
-    EndIf
+    DebugInfo("GetDayOfWeek" + GameDaysPassed % 7)
     return GameDaysPassed % 7
 EndFunction
