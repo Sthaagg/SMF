@@ -20,7 +20,6 @@ float function GetTimeStamp(int Unit) global
     Elseif unit == 2
         result = GetCurrentGameTime()
     Endif
-    DebugInfo("TimeStamp: " + result,2)
     return result
 EndFunction
 
@@ -47,13 +46,11 @@ If SMF.GeneralDebug
         Int H = difference as Int
         Float min = ((difference - h) * 60) 
         float Secs = ((min - min as Int) * 60) 
-        Debug.Notification("CountTimeSpent: " + H + ":" + (min as Int) + ":" + (Secs as Int))
     Else
         Int D = difference as Int
         Float H = difference - D * 24
         Float min = ((D - H) * 60) 
         Float Secs = ((min - min as Int) * 60) 
-        Debug.Notification("CountTimeSpent: " + D + ":" + (H as Int)+ ":" + (Min as Int) + ":" + (Secs as Int))
     EndIf
 EndIf
 return difference
@@ -72,7 +69,6 @@ Int Function CountTotalDaysSpent() Global
     Float GameDaysPassed
  
 	GameDaysPassed = GetCurrentGameTime()
-    DebugInfo("CountTotalDaysSpent: " + GameDaysPassed As Int)
     Return GameDaysPassed As Int
 EndFunction
 
@@ -88,7 +84,6 @@ Int Function CountTotalhourSpent() global
     endif
     float GameHourPassed = GetCurrentGameTime()
 	GameHourPassed *= 24 ; Convert day to number of hours
-    DebugInfo("CountTotalhourSpent: "+  GameHourPassed as Int)
     Return GameHourPassed as Int
 EndFunction
 
@@ -104,7 +99,6 @@ Float Function GetCurrentGameTimeInHour() global
     endif
     float GameHourPassed = GetCurrentGameTime()
 	GameHourPassed *= 24 ; Convert day to number of hours
-    DebugInfo("CountTotalhourSpent: "+ GameHourPassed + "H")
     Return GameHourPassed
 EndFunction
 
@@ -122,7 +116,6 @@ Int Function GetCurrentDayHour() global
     float Time = GetCurrentGameTime()
 	Time -= Math.Floor(Time) ; Remove "previous in-game days passed" bit
 	Time *= 24 ; Convert from fraction of a day to number of hours
-    DebugInfo("GetCurrentDayHour: It is "+ Time as Int +" o'clock")
     Return Time as Int
 EndFunction
 

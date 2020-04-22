@@ -532,7 +532,7 @@ int function ArrayTotalCountFloat(Float[] myArray) global
 endFunction
      
      
-int function ArrayHasFloat(Int[] myArray, Float myFloat) global
+int function ArrayHasFloat(Float[] myArray, Float myFloat) global
     ;Attempts to find the given form in the given array, and returns the index of the form if found.
     ;-----------\
     ;Description \	Author: Chesko
