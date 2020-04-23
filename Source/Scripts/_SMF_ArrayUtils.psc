@@ -5,7 +5,7 @@ Scriptname _SMF_ArrayUtils Hidden
 Source Creation Kit Wiki: The following functions were created by Chesko. I added them to SMF as it is not easy to found them and set them gloabl to be easily used} /;
 
 
-bool function ArrayAddForm(Form[] myArray, Form myForm) global
+bool function ArrayAddForm(Form[] akMyArray, Form akMyForm) global
     ;Adds a form to the first available element in the array.
      
     ;-----------\
@@ -19,11 +19,11 @@ bool function ArrayAddForm(Form[] myArray, Form myForm) global
     ;		true		=		Success
      
     int i = 0
-    ;notification("myArray.Length = " + myArray.Length)
-    while i < myArray.Length
-        if myArray[i] == none
-            myArray[i] = myForm
-            ;notification("Adding " + myForm + " to the array.")
+    ;notification("akMyArray.Length = " + akMyArray.Length)
+    while i < akMyArray.Length
+        if akMyArray[i] == none
+            akMyArray[i] = akMyForm
+            ;notification("Adding " + akMyForm + " to the array.")
             return true
         else
             i += 1
@@ -33,25 +33,25 @@ bool function ArrayAddForm(Form[] myArray, Form myForm) global
     return false
 endFunction
      
-bool function ArrayRemoveForm(Form[] myArray, Form myForm, bool bSort = false) global
-;Removes a form from the array, if found. Sorts the array using ArraySortForm() if bSort is true.
+bool function ArrayRemoveForm(Form[] akMyArray, Form akMyForm, bool akSort = false) global
+;Removes a form from the array, if found. Sorts the array using ArraySortForm() if akSort is true.
      
     ;-----------\
     ;Description \	Author: Chesko
     ;----------------------------------------------------------------
-    ;Removes a form from the array, if found. Sorts the array using ArraySortForm() if bSort is true.
+    ;Removes a form from the array, if found. Sorts the array using ArraySortForm() if akSort is true.
     ;-------------\
     ;Return Values \
     ;----------------------------------------------------------------
     ;		false		=		Error (Form not found)
     ;		true		=		Success
     int i = 0
-    while i < myArray.Length
-        if myArray[i] == myForm
-            myArray[i] = none
+    while i < akMyArray.Length
+        if akMyArray[i] == akMyForm
+            akMyArray[i] = none
             ;notification("Removing element " + i)
-            if bSort == true
-                ArraySortForm(myArray)
+            if akSort == true
+                ArraySortForm(akMyArray)
             endif
             return true
         else
@@ -61,7 +61,7 @@ bool function ArrayRemoveForm(Form[] myArray, Form myForm, bool bSort = false) g
     return false
     endFunction
      
-bool function ArraySortForm(Form[] myArray, int i = 0) global
+bool function ArraySortForm(Form[] akMyArray, int i = 0) global
 ;Removes blank elements by shifting all elements down.
     ;-----------\
     ;Description \  Author: Chesko
@@ -75,8 +75,8 @@ bool function ArraySortForm(Form[] myArray, int i = 0) global
     ;		   true			=			   Success
     bool bFirstNoneFound = false
     int iFirstNonePos = i
-    while i < myArray.Length
-        if myArray[i] == none
+    while i < akMyArray.Length
+        if akMyArray[i] == none
             if bFirstNoneFound == false
                 bFirstNoneFound = true
                 iFirstNonePos = i
@@ -87,12 +87,12 @@ bool function ArraySortForm(Form[] myArray, int i = 0) global
         else
             if bFirstNoneFound == true
                 ;check to see if it's a couple of blank entries in a row
-                if !(myArray[i] == none)
+                if !(akMyArray[i] == none)
                     ;notification("Moving element " + i + " to index " + iFirstNonePos)
-                    myArray[iFirstNonePos] = myArray[i]
-                    myArray[i] = none
+                    akMyArray[iFirstNonePos] = akMyArray[i]
+                    akMyArray[i] = none
                     ;Call this function recursively until it returns
-                    ArraySortForm(myArray, iFirstNonePos + 1)
+                    ArraySortForm(akMyArray, iFirstNonePos + 1)
                     return true
                 else
                     i += 1
@@ -105,7 +105,7 @@ bool function ArraySortForm(Form[] myArray, int i = 0) global
     return false
 endFunction
      
-function ArrayClearForm(Form[] myArray) global
+function ArrayClearForm(Form[] akMyArray) global
     ;Deletes the contents of this array.
     ;-----------\
     ;Description \	Author: Chesko
@@ -116,14 +116,14 @@ function ArrayClearForm(Form[] myArray) global
     ;----------------------------------------------------------------
     ;		none
     int i = 0
-    while i < myArray.Length
-        myArray[i] = none
+    while i < akMyArray.Length
+        akMyArray[i] = none
         i += 1
     endWhile
 endFunction
      
      
-int function ArrayTotalCountForm(Form[] myArray) global
+int function ArrayTotalCountForm(Form[] akMyArray) global
     ;Counts the number of indices in this array that do not have a "none" type.
     ;-----------\
     ;Description \	Author: Chesko
@@ -135,8 +135,8 @@ int function ArrayTotalCountForm(Form[] myArray) global
     ;		int myCount = number of indicies that are not "none"
     int i = 0
     int myCount = 0
-    while i < myArray.Length
-        if myArray[i] != none
+    while i < akMyArray.Length
+        if akMyArray[i] != none
             myCount += 1
             i += 1
         else
@@ -148,7 +148,7 @@ int function ArrayTotalCountForm(Form[] myArray) global
 endFunction
      
      
-int function ArrayHasForm(Form[] myArray, Form myForm) global
+int function ArrayHasForm(Form[] akMyArray, Form akMyForm) global
     ;Attempts to find the given form in the given array, and returns the index of the form if found.
     ;-----------\
     ;Description \	Author: Chesko
@@ -160,8 +160,8 @@ int function ArrayHasForm(Form[] myArray, Form myForm) global
     ;		-1		  =		Form not found
     ;		int i		  =		Location of the form
     int i = 0
-    while i < myArray.Length
-        if myArray[i] == myForm
+    while i < akMyArray.Length
+        if akMyArray[i] == akMyForm
             return i
         else
             i += 1
@@ -171,10 +171,10 @@ int function ArrayHasForm(Form[] myArray, Form myForm) global
 endFunction
      
      
-int function ArrayCountForm(Form[] myArray, Form myForm) global
+int function ArrayCountForm(Form[] akMyArray, Form akMyForm) global
     ;Attempts to count the number of times the given form appears in this array.
     ;-----------\
-    ;Description \
+    ;Description \	Author: Chesko
     ;----------------------------------------------------------------
     ;Attempts to count the number of times the given form appears in this array.
     ;-------------\
@@ -184,8 +184,8 @@ int function ArrayCountForm(Form[] myArray, Form myForm) global
     ;		int i		 		=		Number of times form appears in array
     int i = 0
     int iCount = 0
-    while i < myArray.Length
-        if myArray[i] == myForm
+    while i < akMyArray.Length
+        if akMyArray[i] == akMyForm
             iCount += 1
             i += 1
         else
@@ -197,11 +197,11 @@ endFunction
 
 ;/ Function dedicated to manipulate Int type array (Int[]) /;
 
-bool function ArrayAddInt(Int[] myArray, Int myInt) global
+bool function ArrayAddInt(Int[] akMyArray, Int akMyInt) global
     ;Adds a form to the first available element in the array.
      
     ;-----------\
-    ;Description \	Author: Chesko
+    ;Description \
     ;----------------------------------------------------------------
     ;Adds a form to the first available element in the array.
     ;-------------\
@@ -211,11 +211,11 @@ bool function ArrayAddInt(Int[] myArray, Int myInt) global
     ;		true		=		Success
      
     int i = 0
-    ;notification("myArray.Length = " + myArray.Length)
-    while i < myArray.Length
-        if myArray[i] == 0
-            myArray[i] = myInt
-            ;notification("Adding " + myInt + " to the array.")
+    ;notification("akMyArray.Length = " + akMyArray.Length)
+    while i < akMyArray.Length
+        if akMyArray[i] == 0
+            akMyArray[i] = akMyInt
+            ;notification("Adding " + akMyInt + " to the array.")
             return true
         else
             i += 1
@@ -225,25 +225,25 @@ bool function ArrayAddInt(Int[] myArray, Int myInt) global
     return false
 endFunction
      
-bool function ArrayRemoveInt(Int[] myArray, Int myInt, bool bSort = false) global
-;Removes a form from the array, if found. Sorts the array using ArraySortForm() if bSort is true.
+bool function ArrayRemoveInt(Int[] akMyArray, Int akMyInt, bool akSort = false) global
+;Removes a form from the array, if found. Sorts the array using ArraySortForm() if akSort is true.
      
     ;-----------\
-    ;Description \	Author: Chesko
+    ;Description \
     ;----------------------------------------------------------------
-    ;Removes a form from the array, if found. Sorts the array using ArraySortForm() if bSort is true.
+    ;Removes a form from the array, if found. Sorts the array using ArraySortForm() if akSort is true.
     ;-------------\
     ;Return Values \
     ;----------------------------------------------------------------
     ;		false		=		Error (Form not found)
     ;		true		=		Success
     int i = 0
-    while i < myArray.Length
-        if myArray[i] == myInt
-            myArray[i] = 0
+    while i < akMyArray.Length
+        if akMyArray[i] == akMyInt
+            akMyArray[i] = 0
             ;notification("Removing element " + i)
-            if bSort == true
-                ArraySortInt(myArray)
+            if akSort == true
+                ArraySortInt(akMyArray)
             endif
             return true
         else
@@ -253,10 +253,10 @@ bool function ArrayRemoveInt(Int[] myArray, Int myInt, bool bSort = false) globa
     return false
     endFunction
      
-bool function ArraySortInt(Int[] myArray, int i = 0) global
+bool function ArraySortInt(Int[] akMyArray, int i = 0) global
 ;Removes blank elements by shifting all elements down.
     ;-----------\
-    ;Description \  Author: Chesko
+    ;Description \
     ;----------------------------------------------------------------
     ;Removes blank elements by shifting all elements down.
     ;Optionally starts sorting from element i.
@@ -267,8 +267,8 @@ bool function ArraySortInt(Int[] myArray, int i = 0) global
     ;		   true			=			   Success
     bool bFirstNoneFound = false
     int iFirstNonePos = i
-    while i < myArray.Length
-        if myArray[i] == 0
+    while i < akMyArray.Length
+        if akMyArray[i] == 0
             if bFirstNoneFound == false
                 bFirstNoneFound = true
                 iFirstNonePos = i
@@ -279,12 +279,12 @@ bool function ArraySortInt(Int[] myArray, int i = 0) global
         else
             if bFirstNoneFound == true
                 ;check to see if it's a couple of blank entries in a row
-                if !(myArray[i] == 0)
+                if !(akMyArray[i] == 0)
                     ;notification("Moving element " + i + " to index " + iFirstNonePos)
-                    myArray[iFirstNonePos] = myArray[i]
-                    myArray[i] = 0
+                    akMyArray[iFirstNonePos] = akMyArray[i]
+                    akMyArray[i] = 0
                     ;Call this function recursively until it returns
-                    ArraySortInt(myArray, iFirstNonePos + 1)
+                    ArraySortInt(akMyArray, iFirstNonePos + 1)
                     return true
                 else
                     i += 1
@@ -297,10 +297,10 @@ bool function ArraySortInt(Int[] myArray, int i = 0) global
     return false
 endFunction
      
-function ArrayClearInt(Int[] myArray) global
+function ArrayClearInt(Int[] akMyArray) global
     ;Deletes the contents of this array.
     ;-----------\
-    ;Description \	Author: Chesko
+    ;Description \
     ;----------------------------------------------------------------
     ;Deletes the contents of this array.
     ;-------------\
@@ -308,14 +308,14 @@ function ArrayClearInt(Int[] myArray) global
     ;----------------------------------------------------------------
     ;		none
     int i = 0
-    while i < myArray.Length
-        myArray[i] = 0
+    while i < akMyArray.Length
+        akMyArray[i] = 0
         i += 1
     endWhile
 endFunction
      
      
-int function ArrayTotalCountInt(Int[] myArray) global
+int function ArrayTotalCountInt(Int[] akMyArray) global
     ;Counts the number of indices in this array that do not have a "none" type.
     ;-----------\
     ;Description \	Author: Chesko
@@ -327,8 +327,8 @@ int function ArrayTotalCountInt(Int[] myArray) global
     ;		int myCount = number of indicies that are not "none"
     int i = 0
     int myCount = 0
-    while i < myArray.Length
-        if myArray[i] != 0
+    while i < akMyArray.Length
+        if akMyArray[i] != 0
             myCount += 1
             i += 1
         else
@@ -340,10 +340,10 @@ int function ArrayTotalCountInt(Int[] myArray) global
 endFunction
      
      
-int function ArrayHasInt(Int[] myArray, Int myInt) global
+int function ArrayHasInt(Int[] akMyArray, Int akMyInt) global
     ;Attempts to find the given form in the given array, and returns the index of the form if found.
     ;-----------\
-    ;Description \	Author: Chesko
+    ;Description \
     ;----------------------------------------------------------------
     ;Attempts to find the given form in the given array, and returns the index of the form if found.
     ;-------------\
@@ -352,8 +352,8 @@ int function ArrayHasInt(Int[] myArray, Int myInt) global
     ;		-1		  =		Form not found
     ;		int i		  =		Location of the form
     int i = 0
-    while i < myArray.Length
-        if myArray[i] == myInt
+    while i < akMyArray.Length
+        if akMyArray[i] == akMyInt
             return i
         else
             i += 1
@@ -363,7 +363,7 @@ int function ArrayHasInt(Int[] myArray, Int myInt) global
 endFunction
      
      
-int function ArrayCountInt(Int[] myArray, Int myInt) global
+int function ArrayCountInt(Int[] akMyArray, Int akMyInt) global
     ;Attempts to count the number of times the given form appears in this array.
     ;-----------\
     ;Description \
@@ -376,8 +376,8 @@ int function ArrayCountInt(Int[] myArray, Int myInt) global
     ;		int i		 		=		Number of times form appears in array
     int i = 0
     int iCount = 0
-    while i < myArray.Length
-        if myArray[i] == myInt
+    while i < akMyArray.Length
+        if akMyArray[i] == akMyInt
             iCount += 1
             i += 1
         else
@@ -389,11 +389,11 @@ endFunction
 
 ;/ Function dedicated to manipulate Int type array (Float[]) /;
 
-bool function ArrayAddFloat(Float[] myArray, Float myFloat) global
+bool function ArrayAddFloat(Float[] akMyArray, Float akMyFloat) global
     ;Adds a form to the first available element in the array.
      
     ;-----------\
-    ;Description \	Author: Chesko
+    ;Description \
     ;----------------------------------------------------------------
     ;Adds a form to the first available element in the array.
     ;-------------\
@@ -403,11 +403,11 @@ bool function ArrayAddFloat(Float[] myArray, Float myFloat) global
     ;		true		=		Success
      
     int i = 0
-    ;notification("myArray.Length = " + myArray.Length)
-    while i < myArray.Length
-        if myArray[i] == 0
-            myArray[i] = myFloat
-            ;notification("Adding " + myInt + " to the array.")
+    ;notification("akMyArray.Length = " + akMyArray.Length)
+    while i < akMyArray.Length
+        if akMyArray[i] == 0
+            akMyArray[i] = akMyFloat
+            ;notification("Adding " + akMyInt + " to the array.")
             return true
         else
             i += 1
@@ -417,25 +417,25 @@ bool function ArrayAddFloat(Float[] myArray, Float myFloat) global
     return false
 endFunction
      
-bool function ArrayRemoveFloat(Float[] myArray, Float myFloat, bool bSort = false) global
-;Removes a form from the array, if found. Sorts the array using ArraySortForm() if bSort is true.
+bool function ArrayRemoveFloat(Float[] akMyArray, Float akMyFloat, bool akSort = false) global
+;Removes a form from the array, if found. Sorts the array using ArraySortForm() if akSort is true.
      
     ;-----------\
-    ;Description \	Author: Chesko
+    ;Description \
     ;----------------------------------------------------------------
-    ;Removes a form from the array, if found. Sorts the array using ArraySortForm() if bSort is true.
+    ;Removes a form from the array, if found. Sorts the array using ArraySortForm() if akSort is true.
     ;-------------\
     ;Return Values \
     ;----------------------------------------------------------------
     ;		false		=		Error (Form not found)
     ;		true		=		Success
     int i = 0
-    while i < myArray.Length
-        if myArray[i] == myFloat
-            myArray[i] = 0
+    while i < akMyArray.Length
+        if akMyArray[i] == akMyFloat
+            akMyArray[i] = 0
             ;notification("Removing element " + i)
-            if bSort == true
-                ArraySortFloat(myArray)
+            if akSort == true
+                ArraySortFloat(akMyArray)
             endif
             return true
         else
@@ -445,10 +445,10 @@ bool function ArrayRemoveFloat(Float[] myArray, Float myFloat, bool bSort = fals
     return false
 endFunction
      
-bool function ArraySortFloat(Float[] myArray, int i = 0) global
+bool function ArraySortFloat(Float[] akMyArray, int i = 0) global
 ;Removes blank elements by shifting all elements down.
     ;-----------\
-    ;Description \  Author: Chesko
+    ;Description \
     ;----------------------------------------------------------------
     ;Removes blank elements by shifting all elements down.
     ;Optionally starts sorting from element i.
@@ -459,8 +459,8 @@ bool function ArraySortFloat(Float[] myArray, int i = 0) global
     ;		   true			=			   Success
     bool bFirstNoneFound = false
     int iFirstNonePos = i
-    while i < myArray.Length
-        if myArray[i] == 0
+    while i < akMyArray.Length
+        if akMyArray[i] == 0
             if bFirstNoneFound == false
                 bFirstNoneFound = true
                 iFirstNonePos = i
@@ -471,12 +471,12 @@ bool function ArraySortFloat(Float[] myArray, int i = 0) global
         else
             if bFirstNoneFound == true
                 ;check to see if it's a couple of blank entries in a row
-                if !(myArray[i] == 0)
+                if !(akMyArray[i] == 0)
                     ;notification("Moving element " + i + " to index " + iFirstNonePos)
-                    myArray[iFirstNonePos] = myArray[i]
-                    myArray[i] = 0
+                    akMyArray[iFirstNonePos] = akMyArray[i]
+                    akMyArray[i] = 0
                     ;Call this function recursively until it returns
-                    ArraySortFloat(myArray, iFirstNonePos + 1)
+                    ArraySortFloat(akMyArray, iFirstNonePos + 1)
                     return true
                 else
                     i += 1
@@ -489,10 +489,10 @@ bool function ArraySortFloat(Float[] myArray, int i = 0) global
     return false
 endFunction
      
-function ArrayClearFloat(float[] myArray) global
+function ArrayClearFloat(float[] akMyArray) global
     ;Deletes the contents of this array.
     ;-----------\
-    ;Description \	Author: Chesko
+    ;Description \
     ;----------------------------------------------------------------
     ;Deletes the contents of this array.
     ;-------------\
@@ -500,14 +500,14 @@ function ArrayClearFloat(float[] myArray) global
     ;----------------------------------------------------------------
     ;		none
     int i = 0
-    while i < myArray.Length
-        myArray[i] = 0
+    while i < akMyArray.Length
+        akMyArray[i] = 0
         i += 1
     endWhile
 endFunction
      
      
-int function ArrayTotalCountFloat(Float[] myArray) global
+int function ArrayTotalCountFloat(Float[] akMyArray) global
     ;Counts the number of indices in this array that do not have a "none" type.
     ;-----------\
     ;Description \	Author: Chesko
@@ -519,8 +519,8 @@ int function ArrayTotalCountFloat(Float[] myArray) global
     ;		int myCount = number of indicies that are not "none"
     int i = 0
     int myCount = 0
-    while i < myArray.Length
-        if myArray[i] != 0
+    while i < akMyArray.Length
+        if akMyArray[i] != 0
             myCount += 1
             i += 1
         else
@@ -532,10 +532,10 @@ int function ArrayTotalCountFloat(Float[] myArray) global
 endFunction
      
      
-int function ArrayHasFloat(Float[] myArray, Float myFloat) global
+int function ArrayHasFloat(Float[] akMyArray, Float akMyFloat) global
     ;Attempts to find the given form in the given array, and returns the index of the form if found.
     ;-----------\
-    ;Description \	Author: Chesko
+    ;Description \	
     ;----------------------------------------------------------------
     ;Attempts to find the given form in the given array, and returns the index of the form if found.
     ;-------------\
@@ -544,8 +544,8 @@ int function ArrayHasFloat(Float[] myArray, Float myFloat) global
     ;		-1		  =		Form not found
     ;		int i		  =		Location of the form
     int i = 0
-    while i < myArray.Length
-        if myArray[i] == myFloat
+    while i < akMyArray.Length
+        if akMyArray[i] == akMyFloat
             return i
         else
             i += 1
@@ -555,7 +555,7 @@ int function ArrayHasFloat(Float[] myArray, Float myFloat) global
 endFunction
      
      
-int function ArrayCountFloat(Float[] myArray, Float myFloat) global
+int function ArrayCountFloat(Float[] akMyArray, Float akMyFloat) global
     ;Attempts to count the number of times the given form appears in this array.
     ;-----------\
     ;Description \
@@ -568,8 +568,8 @@ int function ArrayCountFloat(Float[] myArray, Float myFloat) global
     ;		int i		 		=		Number of times form appears in array
     int i = 0
     int iCount = 0
-    while i < myArray.Length
-        if myArray[i] == myFloat
+    while i < akMyArray.Length
+        if akMyArray[i] == akMyFloat
             iCount += 1
             i += 1
         else

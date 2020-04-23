@@ -75,9 +75,9 @@ Bool Function IsInSupernaturalAndultraUnhealthyPlace() global
     Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
     Formlist KeywordList = SMF._SMF_SupernaturalAndultraUnhealthyPlace
 
-    Int Idx = KeywordList.GetSize()
+    Int idx = KeywordList.GetSize()
     While idx > 0
-        Keyword Test = KeywordList.GetAt(Idx) as Keyword
+        Keyword Test = KeywordList.GetAt(idx) as Keyword
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -95,9 +95,9 @@ Bool Function IsInAbandonnedAndVeryUnhealthyPlace() global
     Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
     Formlist KeywordList = SMF._SMF_AbandonnedAndVeryUnhealthyPlace
 
-    Int Idx = KeywordList.GetSize()
+    Int idx = KeywordList.GetSize()
     While idx > 0
-        Keyword Test = KeywordList.GetAt(Idx) as Keyword
+        Keyword Test = KeywordList.GetAt(idx) as Keyword
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -115,9 +115,9 @@ Bool Function IsInCampAndHighUnhealthyPlace() global
     Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
     Formlist KeywordList = SMF._SMF_CampAndHighUnhealthyPlace
 
-    Int Idx = KeywordList.GetSize()
+    Int idx = KeywordList.GetSize()
     While idx > 0
-        Keyword Test = KeywordList.GetAt(Idx) as Keyword
+        Keyword Test = KeywordList.GetAt(idx) as Keyword
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -135,9 +135,9 @@ Bool Function IsInCampAndAverageUnhealthyPlace() global
     Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
     Formlist KeywordList = SMF._SMF_CampAndAverageUnhealthyPlace
 
-    Int Idx = KeywordList.GetSize()
+    Int idx = KeywordList.GetSize()
     While idx > 0
-        Keyword Test = KeywordList.GetAt(Idx) as Keyword
+        Keyword Test = KeywordList.GetAt(idx) as Keyword
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -155,9 +155,9 @@ Bool Function IsInDwemerAndLowUnhealthyPlace() global
     Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
     Formlist KeywordList = SMF._SMF_DwemerAndLowUnhealthyPlace
 
-    Int Idx = KeywordList.GetSize()
+    Int idx = KeywordList.GetSize()
     While idx > 0
-        Keyword Test = KeywordList.GetAt(Idx) as Keyword
+        Keyword Test = KeywordList.GetAt(idx) as Keyword
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -175,9 +175,9 @@ Bool Function IsInCaveAndLowUnhealthyPlace() global
     Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
     Formlist KeywordList = SMF._SMF_CaveAndLowUnhealthyPlace
 
-    Int Idx = KeywordList.GetSize()
+    Int idx = KeywordList.GetSize()
     While idx > 0
-        Keyword Test = KeywordList.GetAt(Idx) as Keyword
+        Keyword Test = KeywordList.GetAt(idx) as Keyword
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -195,9 +195,9 @@ Bool Function IsInLowPopulatedAndLowHealthyPlace() global
     Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
     Formlist KeywordList = SMF._SMF_LowPopulatedAndLowHealthyPlace
 
-    Int Idx = KeywordList.GetSize()
+    Int idx = KeywordList.GetSize()
     While idx > 0
-        Keyword Test = KeywordList.GetAt(Idx) as Keyword
+        Keyword Test = KeywordList.GetAt(idx) as Keyword
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -215,9 +215,9 @@ Bool Function IsInPopulatedSafeAndAverageHealthyPlace() global
     Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
     Formlist KeywordList = SMF._SMF_PopulatedSafeAndAverageHealthyPlace
 
-    Int Idx = KeywordList.GetSize()
+    Int idx = KeywordList.GetSize()
     While idx > 0
-        Keyword Test = KeywordList.GetAt(Idx) as Keyword
+        Keyword Test = KeywordList.GetAt(idx) as Keyword
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -235,9 +235,9 @@ Bool Function IsInSupernaturalAndHighHealthyPlace() global
     Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
     Formlist KeywordList = SMF._SMF_SupernaturalAndHighHealthyPlace
 
-    Int Idx = KeywordList.GetSize()
+    Int idx = KeywordList.GetSize()
     While idx > 0
-        Keyword Test = KeywordList.GetAt(Idx) as Keyword
+        Keyword Test = KeywordList.GetAt(idx) as Keyword
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -255,9 +255,9 @@ Bool Function IsInPopulatedAndHighHealthyPlace() global
     Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
     Formlist KeywordList = SMF._SMF_PopulatedAndHighHealthyPlace
 
-    Int Idx = KeywordList.GetSize()
+    Int idx = KeywordList.GetSize()
     While idx > 0
-        Keyword Test = KeywordList.GetAt(Idx) as Keyword
+        Keyword Test = KeywordList.GetAt(idx) as Keyword
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -275,9 +275,9 @@ Bool Function IsInSafeAndUltraHealthyPlace() global
     Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
     Formlist KeywordList = SMF._SMF_SafeAndUltraHealthyPlace
 
-    Int Idx = KeywordList.GetSize()
+    Int idx = KeywordList.GetSize()
     While idx > 0
-        Keyword Test = KeywordList.GetAt(Idx) as Keyword
+        Keyword Test = KeywordList.GetAt(idx) as Keyword
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf

@@ -4,9 +4,9 @@ import _SMF_Utils
 Import Utility
 Import Math
 
-float function GetTimeStamp(int Unit) global
+float function GetTimeStamp(int akUnit) global
 ;/  
-+   If unit 1 Result is returned in Hour, 2 in Day
++   If akUnit 1 Result is returned in Hour, 2 in Day
 +   Result is returned as a float so it needs to be called in a variable 
 /;
     _SMF_API SMF = GetAPI()
@@ -15,15 +15,15 @@ float function GetTimeStamp(int Unit) global
         return 0
     endif
     float result
-    If Unit == 1
+    If akUnit == 1
         result = GetCurrentGameTimeInHour()
-    Elseif unit == 2
+    Elseif akUnit == 2
         result = GetCurrentGameTime()
     Endif
     return result
 EndFunction
 
-float function CalculTimePassed(Float PreviousTime, int Unit) global
+float function CalculTimePassed(Float akPreviousTime, int akUnit) global
 ;/  
 +   Mode 1 Result is returned in Hour, 2 in Day
 +   You must use same unit as the one used with GameTimeStamp() or from the variable you use
@@ -35,14 +35,14 @@ if SMF == none
     return 0
 endif
     Float currenttime
-    If Unit == 1
+    If akUnit == 1
         currenttime = GetCurrentGameTimeInHour()
-    Elseif Unit == 2
+    Elseif akUnit == 2
         currenttime = GetCurrentGameTime()
     Endif
-    Float difference = currenttime - PreviousTime
+    Float difference = currenttime - akPreviousTime
 If SMF.GeneralDebug
-    If unit == 1
+    If akUnit == 1
         Int H = difference as Int
         Float min = ((difference - h) * 60) 
         float Secs = ((min - min as Int) * 60) 
@@ -66,10 +66,10 @@ Int Function CountTotalDaysSpent() Global
         RaiseSMFAPIError()
         return 0
     endif
-    Float GameDaysPassed
+    Float gamedayspassed
  
-	GameDaysPassed = GetCurrentGameTime()
-    Return GameDaysPassed As Int
+	gamedayspassed = GetCurrentGameTime()
+    Return gamedayspassed As Int
 EndFunction
 
 Int Function CountTotalhourSpent() global 
@@ -82,9 +82,9 @@ Int Function CountTotalhourSpent() global
         RaiseSMFAPIError()
         return 0
     endif
-    float GameHourPassed = GetCurrentGameTime()
-	GameHourPassed *= 24 ; Convert day to number of hours
-    Return GameHourPassed as Int
+    float gamehourspassed = GetCurrentGameTime()
+	gamehourspassed *= 24 ; Convert day to number of hours
+    Return gamehourspassed as Int
 EndFunction
 
 Float Function GetCurrentGameTimeInHour() global
@@ -97,9 +97,9 @@ Float Function GetCurrentGameTimeInHour() global
         RaiseSMFAPIError()
         return 0
     endif
-    float GameHourPassed = GetCurrentGameTime()
-	GameHourPassed *= 24 ; Convert day to number of hours
-    Return GameHourPassed
+    float gamehourspassed = GetCurrentGameTime()
+	gamehourspassed *= 24 ; Convert day to number of hours
+    Return gamehourspassed
 EndFunction
 
 
@@ -113,10 +113,10 @@ Int Function GetCurrentDayHour() global
         RaiseSMFAPIError()
         return 0
     endif
-    float Time = GetCurrentGameTime()
-	Time -= Math.Floor(Time) ; Remove "previous in-game days passed" bit
-	Time *= 24 ; Convert from fraction of a day to number of hours
-    Return Time as Int
+    float time = GetCurrentGameTime()
+	time -= Math.Floor(time) ; Remove "previous in-game days passed" bit
+	time *= 24 ; Convert from fraction of a day to number of hours
+    Return time as Int
 EndFunction
 
 ; Credit Creation Kit Wiki for the script belows:
@@ -148,33 +148,33 @@ Int Function GetCurrentMoonphase() Global
         RaiseSMFAPIError()
         return 0
     endif
-    Int GameDaysPassed
-	Int GameHoursPassed
-    Int PhaseTest
+    Int gamedayspassed
+	Int gamehourspassed
+    Int phasetest
     Int result
-	GameDaysPassed = CountTotalDaysSpent()
-	GameHoursPassed = GetCurrentDayHour()
+	gamedayspassed = CountTotalDaysSpent()
+	gamehourspassed = GetCurrentDayHour()
  
-	If (GameHoursPassed >= 12.0)
-		GameDaysPassed += 1
+	If (gamehourspassed >= 12.0)
+		gamedayspassed += 1
 	EndIf
  
-	PhaseTest = GameDaysPassed % 24 ;A full cycle through the moon phases lasts 24 days
-    If PhaseTest >= 22 || PhaseTest == 0
+	phasetest = gamedayspassed % 24 ;A full cycle through the moon phases lasts 24 days
+    If phasetest >= 22 || phasetest == 0
         Result = 7
-	ElseIf PhaseTest < 4
+	ElseIf phasetest < 4
 		Result = 0
-	ElseIf PhaseTest < 7
+	ElseIf phasetest < 7
 		Result = 1
-	ElseIf PhaseTest < 10
+	ElseIf phasetest < 10
 		Result = 2
-	ElseIF PhaseTest < 13
+	ElseIF phasetest < 13
 		Result = 3
-	ElseIf PhaseTest < 16
+	ElseIf phasetest < 16
 		Result = 4
-	ElseIf PhaseTest < 19
+	ElseIf phasetest < 19
 		Result = 5
-	ElseIf PhaseTest < 22
+	ElseIf phasetest < 22
 		Result = 6
 	EndIf
     DebugInfo("GetCurrentMoonphase Result:" + result)
@@ -201,18 +201,18 @@ Int Function GetCurrentMoonSync() Global
         RaiseSMFAPIError()
         return 0
     endif
-    Int GameDaysPassed
-	Int GameHoursPassed
-	Int SyncTest
+    Int gamedayspassed
+	Int gamehourspassed
+	Int synctest
  
-	GameDaysPassed = CountTotalDaysSpent()
-	GameHoursPassed = GetCurrentDayHour()
-	If (GameHoursPassed >= 12)
-		GameDaysPassed += 1
+	gamedayspassed = CountTotalDaysSpent()
+	gamehourspassed = GetCurrentDayHour()
+	If (gamehourspassed >= 12)
+		gamedayspassed += 1
 	EndIf
-	SyncTest = GameDaysPassed % 5
-    DebugInfo("GetCurrentMoonSync" + SyncTest)
-    return SyncTest
+	synctest = gamedayspassed % 5
+    DebugInfo("GetCurrentMoonSync" + synctest)
+    return synctest
 EndFunction
 
 ;/++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -236,9 +236,9 @@ Int Function GetDayOfWeek() Global
         RaiseSMFAPIError()
         return 0
     endif
-    Int GameDaysPassed
+    Int gamedayspassed
  
-	GameDaysPassed = CountTotalDaysSpent()
-    DebugInfo("GetDayOfWeek" + GameDaysPassed % 7)
-    return GameDaysPassed % 7
+	gamedayspassed = CountTotalDaysSpent()
+    DebugInfo("GetDayOfWeek" + gamedayspassed % 7)
+    return gamedayspassed % 7
 EndFunction

@@ -4,7 +4,7 @@ Dress UnDress NPC Script}
 Import _SMF_Utils
 Import _SMF_ArrayUtils
 
-Bool Function DressUndressPlayer(Form[] ListEquip,form[] ListL, bool Unequiped) global
+Bool Function DressUndressPlayer(Form[] akListEquip,form[] akListL, bool akUnequiped) global
 ;/ Script to undress / Dress the player.
 To use this script you need to use an array, a form and a bool properties
 Ex:
@@ -42,9 +42,9 @@ The amnolist use a hardcoded array to share it with other mods wich uses this sc
         EndIf
     EndIf
 	;Check camera mode
-	Int F1StPV = 0
+	Int f1stpv = 0
     if SMF.PlayerRef.GetAnimationVariableBool("IsFirstPerson") == True
-        F1StPV = 1
+        f1stpv = 1
         ;debug.Notification("player is in firstPV")
 	EndIf
 	Closemenu()
@@ -59,11 +59,11 @@ The amnolist use a hardcoded array to share it with other mods wich uses this sc
     EndIf
     Debug.SendAnimationEvent(PlayerRef, "IdleMQ203EsbernBookEnterInstant")
 	
-    If !Unequiped
-		Unequiped = UnequipGear(ListEquip,ListL)
+    If !akUnequiped
+		akUnequiped = UnequipGear(akListEquip,akListL)
 		DebugInfo("Unequip Mode",2)
     Else
-		Unequiped = EquipGear(ListEquip,ListL)
+		akUnequiped = EquipGear(akListEquip,akListL)
 		Utility.Wait(1.0)
 		DebugInfo("Equip Mode",2)
 	EndIF
@@ -74,13 +74,13 @@ The amnolist use a hardcoded array to share it with other mods wich uses this sc
 	Debug.SendAnimationEvent(PlayerRef, "IdleForceDefaultState")
 	Utility.Wait(0.5)
 	;Check camera mode
-	if F1StPV == 1
+	if f1stpv == 1
 		Game.ForceFirstPerson()
 		Utility.Wait(0.100000)
 	EndIf
 	Game.EnablePlayerControls()
 	
-	return Unequiped
+	return akUnequiped
 
 	DebugInfo("Player regain control",2)
 EndFunction
@@ -131,7 +131,7 @@ Function AddDragonbornAmmo() global
 	SMF._SMF_DLC2Detection = 1
 EndFunction
 
-Bool Function UnequipGear(Form[] List, Form[] ListL) global
+Bool Function UnequipGear(Form[] akList, Form[] akListL) global
     _SMF_API SMF = GetAPI()
     if SMF == none
         RaiseSMFAPIError()
@@ -149,7 +149,7 @@ Bool Function UnequipGear(Form[] List, Form[] ListL) global
         If (Math.LogicalAnd(slotsChecked, thisSlot) != thisSlot) 					;Only check slots we haven't found anything equipped on already
             Armor thisArmor = PlayerRef.GetWornForm(thisSlot) as Armor
             If (thisArmor)
-				ArrayAddForm(List,thisArmor)
+				ArrayAddForm(akList,thisArmor)
 				PlayerRef.UnequipItem(thisArmor, false, true)
                 slotsChecked += thisArmor.GetSlotMask() 							;Add all slots this item covers to our slotsChecked variable
             Else																	;No armor was found on this slot
@@ -162,22 +162,22 @@ Bool Function UnequipGear(Form[] List, Form[] ListL) global
 	
 	
 	;-------Ammo---------------------------------------------------
-	Form Amno
-	Bool AmnoFound = False
+	Form amno
+	Bool amnofound = False
 	Int n = ArrayTotalCountForm(SMF._SMF_AmmoListArray)
 
 	While (n > 0)
-		Amno = (SMF._SMF_AmmoListArray[n] as Form)
-		If PlayerRef.IsEquipped(Amno)
-			AmnoFound = true
+		amno = (SMF._SMF_AmmoListArray[n] as Form)
+		If PlayerRef.IsEquipped(amno)
+			amnofound = true
 			n = -1
 		Else 
 			n -= 1
 		EndIf
 	EndWhile
-	If AmnoFound
-		ArrayAddForm(List,Amno)
-		PlayerRef.UnequipItem(Amno, false, true)
+	If amnofound
+		ArrayAddForm(akList,amno)
+		PlayerRef.UnequipItem(amno, false, true)
 	Else
 		Int k = 0
 		While (k < 8)																;First check all hotkeys for ammo. This is very quick, so we can always do it, also it works without Keywords
@@ -189,7 +189,7 @@ Bool Function UnequipGear(Form[] List, Form[] ListL) global
 					DebugInfo("New Ammo found in Hotkeys. Adding to Memory.")
 				EndIf
 				If (PlayerRef.IsEquipped(hotkeyItem))									;If we actually found the equipped ammo, proceed as usual
-					ArrayAddForm(List,hotkeyItem)
+					ArrayAddForm(akList,hotkeyItem)
 					PlayerRef.UnequipItem(hotkeyItem, false, true)
 				EndIf
 			EndIf
@@ -212,7 +212,7 @@ Bool Function UnequipGear(Form[] List, Form[] ListL) global
 						DebugInfo("New Ammo found in Inventory. Adding to Memory.")
 					EndIf
 					If (PlayerRef.IsEquipped(inventoryItem))							;If we actually found the equipped ammo, proceed as usual
-						ArrayAddForm(List,inventoryItem)
+						ArrayAddForm(akList,inventoryItem)
 						PlayerRef.UnequipItem(inventoryItem, false, true)
 					EndIf
 				EndIf
@@ -224,30 +224,30 @@ Bool Function UnequipGear(Form[] List, Form[] ListL) global
 	;-------Right-Hand-Weapons-------------------------------------
 	Form RightWeapon = PlayerRef.GetEquippedObject(1)									;Get and store the primary weapon
 	If (RightWeapon as Weapon)
-		ArrayAddForm(List,RightWeapon)
+		ArrayAddForm(akList,RightWeapon)
         PlayerRef.UnequipItem(RightWeapon, false, true)
 		DebugInfo("Primary Right Weapon saved")
 	EndIf
 	
 	RightWeapon = PlayerRef.GetEquippedObject(1)										;We repeat this step again, since unequipping a two-handed weapon can equip a previously used one-handed weapon
 	If (RightWeapon && !(RightWeapon as Spell))
-		ArrayAddForm(List,RightWeapon)
+		ArrayAddForm(akList,RightWeapon)
         PlayerRef.UnequipItem(RightWeapon, false, true)
 		DebugInfo("Secondary Right Weapon/Item saved")
 	EndIf
 		;-------Left-Hand-Weapon/Shield--------------------------------
 	Form LeftWeapon = PlayerRef.GetEquippedObject(0)								;We process the left hand last, since unequipping a two-handed weapon can equip a previously used one-handed weapon/shield
 	If (LeftWeapon && !(LeftWeapon as Spell))
-		ArrayAddForm(ListL,LeftWeapon)
+		ArrayAddForm(akListL,LeftWeapon)
         PlayerRef.UnequipItem(LeftWeapon, false, true)
 		DebugInfo("Left Weapon/Shield/Item saved")
 	EndIf
-		DebugInfo("Equiped List: " + ArrayTotalCountForm(List),2)
-		DebugInfo("Equiped left : " + ArrayTotalCountForm(ListL),2)
+		DebugInfo("Equiped akList: " + ArrayTotalCountForm(akList),2)
+		DebugInfo("Equiped left : " + ArrayTotalCountForm(akListL),2)
 	return True
 EndFunction
 
-Bool Function EquipGear(Form[] List, Form[] ListL) global
+Bool Function EquipGear(Form[] akList, Form[] akListL) global
     _SMF_API SMF = GetAPI()
     if SMF == none
         RaiseSMFAPIError()
@@ -256,30 +256,30 @@ Bool Function EquipGear(Form[] List, Form[] ListL) global
 	Actor PlayerRef = SMF.PlayerRef
 	
 	;-------Left-Hand-Weapon/Shield--------------------------------
-	Form LeftItem = ListL[0]												;Equip left hand (can only be one item)
+	Form LeftItem = akListL[0]												;Equip left hand (can only be one item)
 	If (LeftItem)
 		PlayerRef.EquipItemEx(LeftItem, 2, false, false)
 	EndIf
-	ArrayClearForm(ListL)																	;Clear this list for the next time we switch outfits
+	ArrayClearForm(akListL)																	;Clear this akList for the next time we switch outfits
 	;--------------------------------------------------------------
 	;-------Rest---------------------------------------------------
-	Int i = ArrayTotalCountForm(List)
+	Int i = ArrayTotalCountForm(akList)
 	While (i > 0)
 		i -= 1
-		Form ListItem = List[i]
+		Form ListItem = akList[i]
 		If (ListItem)
 			PlayerRef.EquipItemEx(ListItem, 0, false, false)
 		EndIf
 	EndWhile
-	ArrayClearForm(List)																	;Clear this list for the next time we switch outfits
+	ArrayClearForm(akList)																	;Clear this akList for the next time we switch outfits
 	;--------------------------------------------------------------
 	return False
 EndFunction
 
-Function DressUndressNPC(Actor akTarget, Int mode) ;Mode 1 unequip gear / Mode 2 reequip
-	If mode == 1
+Function DressUndressNPC(Actor akTarget, Int akMode) ;akMode 1 unequip gear / akMode 2 reequip
+	If akMode == 1
 		akTarget.unequipall() ;remove all gear
-	ElseIf mode == 2 ;This trick triggers NPC equip event and force reequiping his outfit.
+	ElseIf akMode == 2 ;This trick triggers NPC equip event and force reequiping his outfit.
 		_SMF_API SMF = GetAPI()
 		if SMF == none
 			RaiseSMFAPIError()

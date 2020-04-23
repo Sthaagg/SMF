@@ -5,10 +5,10 @@ Quest Property _SMFSystem Auto ; Main quest
 Quest Property _SMF_AutoDetectTeam Auto
 _SMF_API property SMF Auto
 ;===============  VARIABLES   ==========================================;
-bool bMCMready = false
-int iWaitSeconds
-int iMCMregdelay = 10
-int iMaxWait = 30
+bool _bMCMready = false
+int _iWaitSeconds
+int _iMCMregdelay = 10
+int _iMaxWait = 30
 ;===============  Utilities   ==========================================;
 import _SMF_ArrayUtils
 ;===============    EVENTS    ==========================================;
@@ -17,7 +17,7 @@ Event OnInit()
 EndEvent
 ;Needed code if MCM is updated
 ;Event OnConfigManagerReady(string a_eventName, string a_strArg, float a_numArg, Form a_sender)
-;	bMCMready = true
+;	_bMCMready = true
 ;endEvent
 ;===============    Functions  ==========================================;
 Function Maintenance()
@@ -50,56 +50,56 @@ Function Maintenance()
         SMF._SMF_AmmoListArray = new Form[128]
          ;------Filling Array-------------------------------------------
         Debug.Notification("Enabling Water Support")
-        Int I1 = SMF._SMF_WFallAmb.Getsize()
-        While I1 > 0
-            Form WfallForm = SMF._SMF_WFallAmb.GetAt(I1) as Form
+        Int i1 = SMF._SMF_WFallAmb.Getsize()
+        While i1 > 0
+            Form WfallForm = SMF._SMF_WFallAmb.GetAt(i1) as Form
     
             Bool AddingForm = ArrayAddForm(SMF._SMF_WFallAmbArray, WfallForm)
             If Addingform
-                I1 -= 1
+                i1 -= 1
             Else
-                Debug.Notification("Fail to fill Ambient Array " + I1 + "/" + SMF._SMF_WFallAmb.Getsize())
-                I1 = -1
+                Debug.Notification("Fail to fill Ambient Array " + i1 + "/" + SMF._SMF_WFallAmb.Getsize())
+                i1 = -1
             EndIf
         EndWhile
-        Int I2 = SMF._SMF_WFallTop.Getsize()
-        While I2 > 0
-            Form WfallForm = SMF._SMF_WFallTop.GetAt(I2) as Form
+        Int i2 = SMF._SMF_WFallTop.Getsize()
+        While i2 > 0
+            Form WfallForm = SMF._SMF_WFallTop.GetAt(i2) as Form
             Bool AddingForm = ArrayAddForm(SMF._SMF_WFallTopArray, WfallForm)
             If Addingform
-                I2 -= 1
+                i2 -= 1
             Else
-                Debug.Notification("Fail to fill Top Array " + I2 + "/" + SMF._SMF_WFallTop.Getsize() )
-                I2 = -1
+                Debug.Notification("Fail to fill Top Array " + i2 + "/" + SMF._SMF_WFallTop.Getsize() )
+                i2 = -1
             EndIf
         EndWhile
         
-        Int I3 = SMF._SMF_WFallBtom.Getsize()
-        While I3 > 0
-            Form WfallForm = SMF._SMF_WFallBtom.GetAt(I3) as Form
+        Int i3 = SMF._SMF_WFallBtom.Getsize()
+        While i3 > 0
+            Form WfallForm = SMF._SMF_WFallBtom.GetAt(i3) as Form
     
             Bool AddingForm = ArrayAddForm(SMF._SMF_WFallBtomArray, WfallForm)
             If Addingform
-                I3 -= 1
+                i3 -= 1
             Else
-                Debug.Notification("Fail to fill Btom Array " + I3 + "/" + SMF._SMF_WFallBtom.Getsize())
-                I3 = -1
+                Debug.Notification("Fail to fill Btom Array " + i3 + "/" + SMF._SMF_WFallBtom.Getsize())
+                i3 = -1
             EndIf
         EndWhile
         ;We reset Amno list      
         ArrayClearForm(SMF._SMF_AmmoListArray)
         SMF._SMF_DLC1Detection = 0
         SMF._SMF_DLC2Detection = 0
-        Int I4 = SMF._SMF_AmmoList.Getsize()
-        While I4 > 0
-            Form AmnoForm = SMF._SMF_AmmoList.GetAt(I4) as Form
+        Int i4 = SMF._SMF_AmmoList.Getsize()
+        While i4 > 0
+            Form AmnoForm = SMF._SMF_AmmoList.GetAt(i4) as Form
     
             Bool AddingForm = ArrayAddForm(SMF._SMF_AmmoListArray, AmnoForm)
             If Addingform
-                I4 -= 1
+                i4 -= 1
             Else
-                Debug.Notification("Fail to fill Amnolist " + I4 + "/" + SMF._SMF_AmmoList.Getsize())
-                I4 = -1
+                Debug.Notification("Fail to fill Amnolist " + i4 + "/" + SMF._SMF_AmmoList.Getsize())
+                i4 = -1
             EndIf
         EndWhile        
         ;Just in case we sort Array to remove blank entries
@@ -112,10 +112,10 @@ Function Maintenance()
         SMF.iWfallBtomArray = ArrayTotalCountForm(SMF._SMF_WFallBtomArray)
         SMF.iWfallAmbArray = ArrayTotalCountForm(SMF._SMF_WFallAmbArray)  
         ;Needed code if MCM is updated
-        ;int i2 = 0
-        ;while !bMCMready && i2 < 50
+        ;int i5 = 0
+        ;while !_bMCMready && i5 < 50
         ;    Utility.Wait(0.1)
-        ;    i2 += 1
+        ;    i5 += 1
         ;endWhile
         ;Quest qstMCM = Quest.GetQuest("SKI_ConfigManagerInstance") ;as SKI_ConfigManager
         ;qstMCM.SetStage(1)

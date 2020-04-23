@@ -4,17 +4,17 @@ _SMF_API function GetAPI() global
 	return (Game.GetFormFromFile(0xD61, "SMF.esl") as Quest) as _SMF_API
 endFunction
 
-Function DebugInfo(String text,Int type = 1 ) global; Type 1 = notification (default mode), Type 2 = Trace
+Function DebugInfo(String akText,Int akType = 1 ) global; akType 1 = notification (default mode), akType 2 = Trace
     _SMF_API SMF = GetAPI()
     if SMF == none
         RaiseSMFAPIError()
         return none
     endif
     If SMF.GeneralDebug 
-        If type == 1
-            Debug.notification("[SMF] " + text)
-        ElseIf Type == 2
-            Debug.trace("[SMF] " + text)
+        If akType == 1
+            Debug.notification("[SMF] " + akText)
+        ElseIf akType == 2
+            Debug.trace("[SMF] " + akText)
         Endif
     EndIf
 EndFunction
@@ -35,9 +35,9 @@ Actor Function GetPlayerDialogueTarget() global
         return None
     endif
 	Actor kPlayerDialogueTarget
-	Int iLoopCount = 10
-	While iLoopCount > 0
-		iLoopCount -= 1
+	Int i = 10
+	While i > 0
+		i -= 1
 		kPlayerDialogueTarget = Game.FindRandomActorFromRef(SMF.PlayerREF , 200.0)
 		If kPlayerDialogueTarget != SMF.PlayerREF && kPlayerDialogueTarget.IsinDialogueWithPlayer() 
 			Return kPlayerDialogueTarget
@@ -46,22 +46,22 @@ Actor Function GetPlayerDialogueTarget() global
         Return None
 EndFunction
 
-Float Function GetPlayerPosition(String sAxe) global
+Float Function GetPlayerPosition(String akAxe) global
 ;Convenient function, Return float with axis position for player
 	_SMF_API SMF = GetAPI()
     if SMF == none
         RaiseSMFAPIError()
 	endif
-	Float Coordinate
-	if sAxe == "X"
-		Coordinate = SMF.PlayerRef.GetPositionX() as Float
-		return Coordinate
-	ElseIf 	sAxe == "Y"
-		Coordinate = SMF.PlayerRef.GetPositionY() as Float
-	ElseIf 	sAxe == "Z"
-		Coordinate = SMF.PlayerRef.GetPositionZ() as Float
+	Float coordinate
+	if akAxe == "X"
+		coordinate = SMF.PlayerRef.GetPositionX() as Float
+		return coordinate
+	ElseIf 	akAxe == "Y"
+		coordinate = SMF.PlayerRef.GetPositionY() as Float
+	ElseIf 	akAxe == "Z"
+		coordinate = SMF.PlayerRef.GetPositionZ() as Float
 	EndIf
-	return Coordinate
+	return coordinate
 EndFunction
 
 bool Function ActorIsNearPlayer(Actor akActor) global
