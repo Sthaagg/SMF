@@ -4,16 +4,16 @@ _SMF_API function GetAPI() global
 	return (Game.GetFormFromFile(0xD61, "SMF.esl") as Quest) as _SMF_API
 endFunction
 
-Function DebugInfo(String akText,Int akType = 1 ) global; akType 1 = notification (default mode), akType 2 = Trace
+Function DebugInfo(String akText,Int aiMode = 1 ) global; aiMode 1 = notification (default mode), aiMode 2 = Trace
     _SMF_API SMF = GetAPI()
     if SMF == none
         RaiseSMFAPIError()
         return none
     endif
     If SMF.GeneralDebug 
-        If akType == 1
+        If aiMode == 1
             Debug.notification("[SMF] " + akText)
-        ElseIf akType == 2
+        ElseIf aiMode == 2
             Debug.trace("[SMF] " + akText)
         Endif
     EndIf
@@ -46,19 +46,19 @@ Actor Function GetPlayerDialogueTarget() global
         Return None
 EndFunction
 
-Float Function GetPlayerPosition(String akAxe) global
+Float Function GetPlayerPosition(String asAxe) global
 ;Convenient function, Return float with axis position for player
 	_SMF_API SMF = GetAPI()
     if SMF == none
         RaiseSMFAPIError()
 	endif
 	Float coordinate
-	if akAxe == "X"
+	if asAxe == "X"
 		coordinate = SMF.PlayerRef.GetPositionX() as Float
 		return coordinate
-	ElseIf 	akAxe == "Y"
+	ElseIf 	asAxe == "Y"
 		coordinate = SMF.PlayerRef.GetPositionY() as Float
-	ElseIf 	akAxe == "Z"
+	ElseIf 	asAxe == "Z"
 		coordinate = SMF.PlayerRef.GetPositionZ() as Float
 	EndIf
 	return coordinate

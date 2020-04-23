@@ -4,9 +4,9 @@ import _SMF_Utils
 Import Utility
 Import Math
 
-float function GetTimeStamp(int akUnit) global
+float function GetTimeStamp(int aiUnit) global
 ;/  
-+   If akUnit 1 Result is returned in Hour, 2 in Day
++   If aiUnit 1 Result is returned in Hour, 2 in Day
 +   Result is returned as a float so it needs to be called in a variable 
 /;
     _SMF_API SMF = GetAPI()
@@ -15,15 +15,15 @@ float function GetTimeStamp(int akUnit) global
         return 0
     endif
     float result
-    If akUnit == 1
+    If aiUnit == 1
         result = GetCurrentGameTimeInHour()
-    Elseif akUnit == 2
+    Elseif aiUnit == 2
         result = GetCurrentGameTime()
     Endif
     return result
 EndFunction
 
-float function CalculTimePassed(Float akPreviousTime, int akUnit) global
+float function CalculTimePassed(Float afPreviousTime, int aiUnit) global
 ;/  
 +   Mode 1 Result is returned in Hour, 2 in Day
 +   You must use same unit as the one used with GameTimeStamp() or from the variable you use
@@ -35,14 +35,14 @@ if SMF == none
     return 0
 endif
     Float currenttime
-    If akUnit == 1
+    If aiUnit == 1
         currenttime = GetCurrentGameTimeInHour()
-    Elseif akUnit == 2
+    Elseif aiUnit == 2
         currenttime = GetCurrentGameTime()
     Endif
-    Float difference = currenttime - akPreviousTime
+    Float difference = currenttime - afPreviousTime
 If SMF.GeneralDebug
-    If akUnit == 1
+    If aiUnit == 1
         Int H = difference as Int
         Float min = ((difference - h) * 60) 
         float Secs = ((min - min as Int) * 60) 

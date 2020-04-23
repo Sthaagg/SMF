@@ -4,7 +4,7 @@ Dress UnDress NPC Script}
 Import _SMF_Utils
 Import _SMF_ArrayUtils
 
-Bool Function DressUndressPlayer(Form[] akListEquip,form[] akListL, bool akUnequiped) global
+Bool Function DressUndressPlayer(Form[] akListEquip,form[] akListL, bool abUnequiped) global
 ;/ Script to undress / Dress the player.
 To use this script you need to use an array, a form and a bool properties
 Ex:
@@ -59,11 +59,11 @@ The amnolist use a hardcoded array to share it with other mods wich uses this sc
     EndIf
     Debug.SendAnimationEvent(PlayerRef, "IdleMQ203EsbernBookEnterInstant")
 	
-    If !akUnequiped
-		akUnequiped = UnequipGear(akListEquip,akListL)
+    If !abUnequiped
+		abUnequiped = UnequipGear(akListEquip,akListL)
 		DebugInfo("Unequip Mode",2)
     Else
-		akUnequiped = EquipGear(akListEquip,akListL)
+		abUnequiped = EquipGear(akListEquip,akListL)
 		Utility.Wait(1.0)
 		DebugInfo("Equip Mode",2)
 	EndIF
@@ -80,7 +80,7 @@ The amnolist use a hardcoded array to share it with other mods wich uses this sc
 	EndIf
 	Game.EnablePlayerControls()
 	
-	return akUnequiped
+	return abUnequiped
 
 	DebugInfo("Player regain control",2)
 EndFunction
@@ -276,10 +276,10 @@ Bool Function EquipGear(Form[] akList, Form[] akListL) global
 	return False
 EndFunction
 
-Function DressUndressNPC(Actor akTarget, Int akMode) ;akMode 1 unequip gear / akMode 2 reequip
-	If akMode == 1
+Function DressUndressNPC(Actor akTarget, Int aiMode) ;aiMode 1 unequip gear / aiMode 2 reequip
+	If aiMode == 1
 		akTarget.unequipall() ;remove all gear
-	ElseIf akMode == 2 ;This trick triggers NPC equip event and force reequiping his outfit.
+	ElseIf aiMode == 2 ;This trick triggers NPC equip event and force reequiping his outfit.
 		_SMF_API SMF = GetAPI()
 		if SMF == none
 			RaiseSMFAPIError()

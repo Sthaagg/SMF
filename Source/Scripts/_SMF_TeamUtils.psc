@@ -30,7 +30,7 @@ Function AutoDetectTeam(form[] akExlusionList) global
     EndWhile
 EndFunction
 
-Function AddActortoTeamList(Actor akTeammate, Form[] akActorArray, Form[] akExlusionList, Int akMode = 1) global
+Function AddActortoTeamList(Actor akTeammate, Form[] akActorArray, Form[] akExlusionList, Int aiMode = 1) global
     ;/ by default use Mode 2
        Mode 1 (default) use to add non-supported follower to your array
        Mode 2 add NPC to an exclusion list
@@ -44,16 +44,16 @@ Function AddActortoTeamList(Actor akTeammate, Form[] akActorArray, Form[] akExlu
     endif
     int IsinExclusionList = ArrayHasForm(akExlusionList,akTeammate)
     If IsinExclusionList == -1
-        If akMode == 1
+        If aiMode == 1
             ArrayAddForm(akActorArray,akTeammate)
-        Elseif akMode == 2
+        Elseif aiMode == 2
             ArrayAddForm(akExlusionList, akTeammate)
         EndIf
         DebugInfo("teammate = "+ akTeammate); for testing purpose
     EndIf
 EndFunction
 
-Function ResetTeammateList(Form[] akClearedArray = none, Int akMode = 2) global
+Function ResetTeammateList(Form[] akClearedArray = none, Int aiMode = 2) global
     ;/  Convenient function to reset follower/teammate
         Mode 1 Reset auto-filled teammate list
         Mode 2 reset the indicated one.
@@ -63,9 +63,9 @@ Function ResetTeammateList(Form[] akClearedArray = none, Int akMode = 2) global
         RaiseSMFAPIError()
         return None
     endif
-    If akMode == 1
+    If aiMode == 1
         ArrayClearForm(SMF._SMFAutoTeamAliases)
-    ElseIf akMode == 2
+    ElseIf aiMode == 2
         ArrayClearForm(akClearedArray)
     EndIf
 EndFunction
