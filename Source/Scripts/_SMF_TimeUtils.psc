@@ -4,6 +4,26 @@ import _SMF_Utils
 Import Utility
 Import Math
 
+Function PassTime(float afTimePassed) global
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return none
+    endif
+
+    if afTimePassed <= 0
+        return
+    endif
+
+    float time = GetTimeStamp(1)
+    time += afTimePassed
+
+    int hour_passed = Math.floor(afTimePassed)
+    int minute_passed = Math.floor((afTimePassed - hour_passed) * 60)
+    DebugInfo("Time passed - " + hour_passed + " hour(s), " + minute_passed + " minute(s) (" + afTimePassed + ")")
+    SMF.GameHour.setValue(time)
+EndFunction
+
 float function GetTimeStamp(int aiUnit) global
 ;/  
 +   If aiUnit 1 Result is returned in Hour, 2 in Day

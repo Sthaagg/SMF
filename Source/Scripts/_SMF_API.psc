@@ -3,7 +3,7 @@ Scriptname _SMF_API extends Quest Hidden
 Actor Property PlayerRef Auto
 Int	Property _SMF_DLC1Detection = 0 Auto Hidden
 Int	Property _SMF_DLC2Detection = 0 Auto Hidden
-
+GlobalVariable Property Gamehour Auto
 ;Required by _SMF_WaterUtils Script
 ActorBase Property WaterTestActor Auto
 FormList Property _SMF_WFallTop Auto ;Static object that you can found at top
