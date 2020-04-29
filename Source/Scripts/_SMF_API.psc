@@ -27,6 +27,11 @@ Form[] Property _SMFAutoTeamAliases Auto Hidden; Empty, Store teammates detected
 ;Formlist Property _SMFTeamExcludedAliases Auto ; Empty, Store NPCs which must be ignored
 
 ;Required by _SMF_LocationUtils
+Bool Property bIsUnderShelter = False Auto hidden
+Activator Property _SMF_ShelterDetector Auto
+Activator Property _SMF_ShelterDetectorSensor Auto
+Spell Property _SMF_ShelterDetectBeamFar Auto
+Spell Property _SMF_ShelterDetectBeamNear Auto
 ; I tried to regroup location by danger level and something i would call healthyness (Unhealthy : disease, poison or anything about you can think, not a place to rest, Healthy : Disease, poison or anything else, a place whe you can rest)
 ; It should helps to answer of most mod needs. Take a look to script for more inormation.
 Formlist Property _SMF_SupernaturalAndultraUnhealthyPlace Auto
