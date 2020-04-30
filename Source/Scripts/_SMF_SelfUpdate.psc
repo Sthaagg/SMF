@@ -4,6 +4,7 @@ Float Property fVersion Auto
 Quest Property _SMFSystem Auto ; Main quest
 Quest Property _SMF_AutoDetectTeam Auto
 _SMF_API property SMF Auto
+_SMF_Compatibility Property Compatibility Auto
 ;===============  VARIABLES   ==========================================;
 bool _bMCMready = false
 int _iWaitSeconds
@@ -14,6 +15,7 @@ import _SMF_ArrayUtils
 ;===============    EVENTS    ==========================================;
 Event OnInit()
   Maintenance()
+  Compatibility.Moddetection()
 EndEvent
 ;Needed code if MCM is updated
 ;Event OnConfigManagerReady(string a_eventName, string a_strArg, float a_numArg, Form a_sender)

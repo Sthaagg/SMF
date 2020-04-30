@@ -4,4 +4,5 @@ _SMF_SelfUpdate Property QuestScript Auto
 ;===============    EVENTS    ==========================================;
 Event OnPlayerLoadGame()
 	QuestScript.Maintenance()
+	QuestScript.Compatibility.Moddetection()
 EndEvent
