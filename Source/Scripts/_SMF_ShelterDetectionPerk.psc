@@ -27,10 +27,10 @@ Function DetectShelter()
             GlobalVariable IsTakingShelter = Get_Frost_IsTakingShelter()
              if  IsTakingShelter.GetValueInt() == 2
                 SMF.bIsUnderShelter = true
-                DebugInfo("Frostfall compatibility mode: Shelter detected",2)
+                SMFDebugInfo("Frostfall compatibility mode: Shelter detected",2)
             ElseIf IsTakingShelter.GetValueInt() == 1
                 SMF.bIsUnderShelter = false
-                DebugInfo("Frostfall compatibility mode:No Shelter detected",2)
+                SMFDebugInfo("Frostfall compatibility mode:No Shelter detected",2)
             EndIf
         Else
             ObjectReference Detector = SMF.PlayerRef.PlaceAtMe(SMF._SMF_ShelterDetector)

@@ -9,7 +9,7 @@ import _SMF_Utils
 bool function IsPluginLoaded(int aiFormID, string akPluginName)
 	bool b = Game.GetFormFromFile(aiFormID, akPluginName)
 	if b
-		DebugInfo("Loaded: " + akPluginName,2)
+		SMFDebugInfo("Loaded: " + akPluginName,2)
 		return true
 	else
 		return false
@@ -17,9 +17,9 @@ bool function IsPluginLoaded(int aiFormID, string akPluginName)
 endFunction
 
 function Moddetection()
-    DebugInfo(";=============== Compatibility Check Process Start ======================;",2)
-    DebugInfo(";=============== Mod Detection Begin ====================================;",2)
-    DebugInfo(";=============== The following errors are normal ========================;",2)
+    SMFDebugInfo(";=============== Compatibility Check Process Start ======================;",2)
+    SMFDebugInfo(";=============== Mod Detection Begin ====================================;",2)
+    SMFDebugInfo(";=============== The following errors are normal ========================;",2)
     if SMF.bIsFrostfallisLoaded
         SMF.bIsFrostfallisLoaded = IsPluginLoaded(0x00064590, "Frostfall.esp")
         if !SMF.bIsFrostfallisLoaded
@@ -31,6 +31,6 @@ function Moddetection()
             ;Frostfall was just added.
         endif
     endif
-    DebugInfo(";=============== Mod Detection End ======================================;",2)
-    DebugInfo(";=============== Compatibility Check Process End ========================;",2)
+    SMFDebugInfo(";=============== Mod Detection End ======================================;",2)
+    SMFDebugInfo(";=============== Compatibility Check Process End ========================;",2)
 EndFunction

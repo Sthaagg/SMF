@@ -20,7 +20,7 @@ Function PassTime(float afTimePassed) global
 
     int hour_passed = Math.floor(afTimePassed)
     int minute_passed = Math.floor((afTimePassed - hour_passed) * 60)
-    DebugInfo("Time passed - " + hour_passed + " hour(s), " + minute_passed + " minute(s) (" + afTimePassed + ")")
+    SMFDebugInfo("Time passed - " + hour_passed + " hour(s), " + minute_passed + " minute(s) (" + afTimePassed + ")")
     SMF.GameHour.setValue(time)
 EndFunction
 
@@ -197,7 +197,7 @@ Int Function GetCurrentMoonphase() Global
 	ElseIf phasetest < 22
 		Result = 6
 	EndIf
-    DebugInfo("GetCurrentMoonphase Result:" + result)
+    SMFDebugInfo("GetCurrentMoonphase Result:" + result)
     return result
 EndFunction
 
@@ -231,7 +231,7 @@ Int Function GetCurrentMoonSync() Global
 		gamedayspassed += 1
 	EndIf
 	synctest = gamedayspassed % 5
-    DebugInfo("GetCurrentMoonSync" + synctest)
+    SMFDebugInfo("GetCurrentMoonSync" + synctest)
     return synctest
 EndFunction
 
@@ -259,6 +259,6 @@ Int Function GetDayOfWeek() Global
     Int gamedayspassed
  
 	gamedayspassed = CountTotalDaysSpent()
-    DebugInfo("GetDayOfWeek" + gamedayspassed % 7)
+    SMFDebugInfo("GetDayOfWeek" + gamedayspassed % 7)
     return gamedayspassed % 7
 EndFunction

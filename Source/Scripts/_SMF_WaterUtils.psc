@@ -14,7 +14,7 @@ bool function IsCloseToWater(Actor akActor) global
     bool isunderwaterlevel = akActor.GetPositionZ() < waterlevel || waterlevel == 0.0
     ; Test if actor is standing in water (and not swimming)
     if (!akActor.IsSwimming() && (akActor.IsInInterior() || isunderwaterlevel) ); && IsInWater(akActor))
-        DebugInfo("WaterClose")
+        SMFDebugInfo("WaterClose")
         return true
     endIf
     return false
@@ -34,7 +34,7 @@ bool function IsCloseToWaterfall(Actor akActor) global;; Water falldetection is 
         ObjectReference ClosestWFallAmb = Game.FindClosestReferenceOfTypeFromRef(SMF._SMF_WFallAmbArray[i3] as form, akActor, 200.0)
         If ClosestWFallAmb
             i3 = 0
-            DebugInfo("Wfall Ambient:" + ClosestWFallAmb,2)
+            SMFDebugInfo("Wfall Ambient:" + ClosestWFallAmb,2)
             return true
         Else
             i3 -= 1
@@ -49,7 +49,7 @@ bool function IsCloseToWaterfall(Actor akActor) global;; Water falldetection is 
         ObjectReference ClosestWFallBtom = Game.FindClosestReferenceOfTypeFromRef(SMF._SMF_WFallBtomArray[i2] as form, akActor, 200.0)
         If ClosestWFallBtom
             i2 = 0
-            DebugInfo("Wfall Bottom:" + ClosestWFallBtom,2)
+            SMFDebugInfo("Wfall Bottom:" + ClosestWFallBtom,2)
             return true
         Else
             i2 -= 1
@@ -61,7 +61,7 @@ bool function IsCloseToWaterfall(Actor akActor) global;; Water falldetection is 
         ObjectReference ClosestWFallTop = Game.FindClosestReferenceOfTypeFromRef(SMF._SMF_WFallTopArray[i] as form, akActor, 200.0)
         If ClosestWFallTop
             i = 0
-            DebugInfo("Wfall Top:" + ClosestWFallTop,2)
+            SMFDebugInfo("Wfall Top:" + ClosestWFallTop,2)
             return true
         Else
             i -= 1
@@ -93,7 +93,7 @@ bool function IsInWater(Actor akActor) global
     
     Game.EnablePlayerControls() ; Enable all controls
     If result
-        DebugInfo("In Water")
+        SMFDebugInfo("In Water")
     EndIf
     return result
 endFunction

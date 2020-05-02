@@ -4,7 +4,7 @@ _SMF_API function GetAPI() global
 	return (Game.GetFormFromFile(0xD61, "SMF.esl") as Quest) as _SMF_API
 endFunction
 
-Function DebugInfo(String akText,Int aiMode = 1 ) global; aiMode 1 = notification (default mode), aiMode 2 = Trace
+Function SMFDebugInfo(String akText,Int aiMode = 1 ) global; aiMode 1 = notification (default mode), aiMode 2 = Trace
     _SMF_API SMF = GetAPI()
     if SMF == none
         RaiseSMFAPIError()
@@ -46,22 +46,30 @@ Actor Function GetPlayerDialogueTarget() global
         Return None
 EndFunction
 
-Float Function GetPlayerPosition(String asAxe) global
-;Convenient function, Return float with axis position for player
-	_SMF_API SMF = GetAPI()
-    if SMF == none
-        RaiseSMFAPIError()
-	endif
-	Float coordinate
-	if asAxe == "X"
-		coordinate = SMF.PlayerRef.GetPositionX() as Float
-		return coordinate
-	ElseIf 	asAxe == "Y"
-		coordinate = SMF.PlayerRef.GetPositionY() as Float
-	ElseIf 	asAxe == "Z"
-		coordinate = SMF.PlayerRef.GetPositionZ() as Float
-	EndIf
-	return coordinate
+float[] function GetOffsets(Actor akSource, Float afDistance = 100.0, float afOffset = 0.0) global
+    Float A = akSource.GetAngleZ() + afOffset
+    Float YDist = Math.Sin(A)
+    Float XDist = Math.Cos(A)
+
+    XDist *= afDistance
+    YDist *= afDistance
+
+    Float[] Offsets = New Float[2]
+    Offsets[0] = YDist
+    Offsets[1] = XDist
+    Return Offsets
+EndFunction
+
+float[] Function GetActorPosition(Actor akSource) global
+	float X = akSource.GetPositionX() as Float
+	float Y = akSource.GetPositionY() as Float
+	Float Z = akSource.GetPositionZ() as Float
+
+	Float[] Coordinates = New Float[3]
+	Coordinates[0] = X
+	Coordinates[1] = Y
+	Coordinates[2] = Z
+	return Coordinates
 EndFunction
 
 bool Function ActorIsNearPlayer(Actor akActor) global
@@ -81,18 +89,18 @@ bool Function ActorIsNearPlayer(Actor akActor) global
 			if (SMF.PlayerREF.GetDistance(akActor) > 512)
 				return false
 			else
-				DebugInfo("akActor distance: " + SMF.PlayerREF.GetDistance(akActor),2)
+				SMFDebugInfo("akActor distance: " + SMF.PlayerREF.GetDistance(akActor),2)
                 return true
 			endif
 		endif
 	else
-		DebugInfo("akActor distance: " + SMF.PlayerREF.GetDistance(akActor),2)
+		SMFDebugInfo("akActor distance: " + SMF.PlayerREF.GetDistance(akActor),2)
 		return true
 	endif
 endFunction
 
 Bool Function IsSitting(Actor akActor) global
-;Test if game considers that actor is sitting then check if he uses an appropriate furniture as game make no difference btween leaning against a pole or sitting
+;Test if game considers that actor is sitting then check if he uses an appropriate furniture as game make no difference between leaning against a pole or sitting
 ;Return true if ok, must be used in a variable
 	_SMF_API SMF = GetAPI()
     if SMF == none

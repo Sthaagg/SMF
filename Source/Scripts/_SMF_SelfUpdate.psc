@@ -25,7 +25,7 @@ EndEvent
 Function Maintenance()
 
 	If fVersion < 1.0 ; <--- Edit this value when updating
-        Debug.Notification("Better Face lighting initializing")
+        Debug.Notification("SMF initializing")
 		fVersion = 1.0 ; and this
         ; Update Code
         ;-------SKSE-Version-Check-------------------------------------
