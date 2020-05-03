@@ -1,6 +1,7 @@
 Scriptname _SMF_LocationUtils  Hidden 
 
 import _SMF_Utils
+import _SMF_ArrayUtils
 
 Int Function GetPlayerlocationType() global
     _SMF_API SMF = GetAPI()
@@ -32,7 +33,7 @@ Int Function GetPlayerlocationType() global
         return 11
     Endif
 EndFunction
-
+;location classified by type
 Bool Function IsInDangerousPlace() global
     If IsInSupernaturalAndultraUnhealthyPlace() || IsInAbandonnedAndVeryUnhealthyPlace() || IsInCampAndHighUnhealthyPlace() || IsInCampAndAverageUnhealthyPlace() || IsInDwemerAndLowUnhealthyPlace() || IsInCaveAndLowUnhealthyPlace() || IsInSupernaturalAndHighHealthyPlace()
         return true
@@ -65,6 +66,216 @@ Bool Function IsInHealthyArea()
     EndIf
 EndFunction
 
+Bool Function IsInSupernaturalAndultraUnhealthyPlace() global
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return false
+    endif
+    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    Int idx = ArrayTotalCountKeyword(SMF.SupernaturalAndultraUnhealthyPlaceArray)
+
+    While idx > 0
+        Keyword Test = SMF.SupernaturalAndultraUnhealthyPlaceArray[idx]
+        If CurrentPlayerLocation.HasKeyword(Test)
+            return true
+        EndIf
+        idx -= 1
+    EndWhile
+    return false
+EndFunction
+
+Bool Function IsInAbandonnedAndVeryUnhealthyPlace() global
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return false
+    endif
+    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    Int idx = ArrayTotalCountKeyword(SMF.AbandonnedAndVeryUnhealthyPlaceArray)
+
+    While idx > 0
+        Keyword Test = SMF.AbandonnedAndVeryUnhealthyPlaceArray[idx]
+        If CurrentPlayerLocation.HasKeyword(Test)
+            return true
+        EndIf
+        idx -= 1
+    EndWhile
+    return false
+EndFunction
+
+Bool Function IsInCampAndHighUnhealthyPlace() global
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return false
+    endif
+    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    Int idx = ArrayTotalCountKeyword(SMF.CampAndHighUnhealthyPlaceArray)
+
+    While idx > 0
+        Keyword Test = SMF.CampAndHighUnhealthyPlaceArray[idx]
+        If CurrentPlayerLocation.HasKeyword(Test)
+            return true
+        EndIf
+        idx -= 1
+    EndWhile
+    return false
+EndFunction
+
+Bool Function IsInCampAndAverageUnhealthyPlace() global
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return false
+    endif
+    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    Int idx = ArrayTotalCountKeyword(SMF.CampAndAverageUnhealthyPlaceArray)
+
+    While idx > 0
+        Keyword Test = SMF.CampAndAverageUnhealthyPlaceArray[idx]
+        If CurrentPlayerLocation.HasKeyword(Test)
+            return true
+        EndIf
+        idx -= 1
+    EndWhile
+    return false
+EndFunction
+
+Bool Function IsInDwemerAndLowUnhealthyPlace() global
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return false
+    endif
+    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    Int idx = ArrayTotalCountKeyword(SMF.DwemerAndLowUnhealthyPlaceArray)
+
+    While idx > 0
+        Keyword Test = SMF.DwemerAndLowUnhealthyPlaceArray[idx]
+        If CurrentPlayerLocation.HasKeyword(Test)
+            return true
+        EndIf
+        idx -= 1
+    EndWhile
+    return false
+EndFunction
+
+
+Bool Function IsInCaveAndLowUnhealthyPlace() global
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return false
+    endif
+    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    Int idx = ArrayTotalCountKeyword(SMF.CaveAndLowUnhealthyPlaceArray)
+
+    While idx > 0
+        Keyword Test = SMF.CaveAndLowUnhealthyPlaceArray[idx]
+        If CurrentPlayerLocation.HasKeyword(Test)
+            return true
+        EndIf
+        idx -= 1
+    EndWhile
+    return false
+EndFunction
+
+Bool Function IsInLowPopulatedAndLowHealthyPlace() global
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return false
+    endif
+    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    Int idx = ArrayTotalCountKeyword(SMF.LowPopulatedAndLowHealthyPlaceArray)
+
+    While idx > 0
+        Keyword Test = SMF.LowPopulatedAndLowHealthyPlaceArray[idx]
+        If CurrentPlayerLocation.HasKeyword(Test)
+            return true
+        EndIf
+        idx -= 1
+    EndWhile
+    return false
+EndFunction
+
+Bool Function IsInPopulatedSafeAndAverageHealthyPlace() global
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return false
+    endif
+    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    Int idx = ArrayTotalCountKeyword(SMF.PopulatedSafeAndAverageHealthyArray)
+
+    While idx > 0
+        Keyword Test = SMF.PopulatedSafeAndAverageHealthyArray[idx]
+        If CurrentPlayerLocation.HasKeyword(Test)
+            return true
+        EndIf
+        idx -= 1
+    EndWhile
+    return false
+EndFunction
+
+Bool Function IsInSupernaturalAndHighHealthyPlace() global
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return false
+    endif
+    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    Int idx = ArrayTotalCountKeyword(SMF.SupernaturalAndHighHealthyArray)
+
+    While idx > 0
+        Keyword Test = SMF.SupernaturalAndHighHealthyArray[idx]
+        If CurrentPlayerLocation.HasKeyword(Test)
+            return true
+        EndIf
+        idx -= 1
+    EndWhile
+    return false
+EndFunction
+
+Bool Function IsInPopulatedAndHighHealthyPlace() global
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return false
+    endif
+    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    Int idx = ArrayTotalCountKeyword(SMF.PopulatedAndHighHealthyPlaceArray)
+
+    While idx > 0
+        Keyword Test = SMF.PopulatedAndHighHealthyPlaceArray[idx]
+        If CurrentPlayerLocation.HasKeyword(Test)
+            return true
+        EndIf
+        idx -= 1
+    EndWhile
+    return false
+EndFunction
+
+Bool Function IsInSafeAndUltraHealthyPlace() global
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return false
+    endif
+    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    Int idx = ArrayTotalCountKeyword(SMF.SafeAndUltraHealthyPlaceArray)
+
+    While idx > 0
+        Keyword Test = SMF.SafeAndUltraHealthyPlaceArray[idx]
+        If CurrentPlayerLocation.HasKeyword(Test)
+            return true
+        EndIf
+        idx -= 1
+    EndWhile
+    return false
+EndFunction
+;/
 Bool Function IsInSupernaturalAndultraUnhealthyPlace() global
     _SMF_API SMF = GetAPI()
     if SMF == none
@@ -284,3 +495,4 @@ Bool Function IsInSafeAndUltraHealthyPlace() global
         idx -= 1
     EndWhile
 EndFunction
+/;

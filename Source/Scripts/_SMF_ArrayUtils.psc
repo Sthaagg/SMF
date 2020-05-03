@@ -578,3 +578,95 @@ int function ArrayCountFloat(Float[] akMyArray, Float afMyFloat) global
     endWhile
     return iCount
 endFunction
+
+
+bool function ArrayAddKeyWord(Keyword[] akMyArray, keyword akMykeyword) global
+    ;Adds a form to the first available element in the array.
+     
+    ;-----------\
+    ;Description \	Author: Chesko
+    ;----------------------------------------------------------------
+    ;Adds a form to the first available element in the array.
+    ;-------------\
+    ;Return Values \
+    ;----------------------------------------------------------------
+    ;		false		=		Error (array full)
+    ;		true		=		Success
+     
+    int i = 0
+    ;notification("akMyArray.Length = " + akMyArray.Length)
+    while i < akMyArray.Length
+        if akMyArray[i] == none
+            akMyArray[i] = akMykeyword
+            ;notification("Adding " + akMyForm + " to the array.")
+            return true
+        else
+            i += 1
+        endif
+    endWhile
+     
+    return false
+endFunction
+
+function ArrayClearKeyWord(KeyWord[] akMyArray) global
+    ;Deletes the contents of this array.
+    ;-----------\
+    ;Description \
+    ;----------------------------------------------------------------
+    ;Deletes the contents of this array.
+    ;-------------\
+    ;Return Values \
+    ;----------------------------------------------------------------
+    ;		none
+    int i = 0
+    while i < akMyArray.Length
+        akMyArray[i] = none
+        i += 1
+    endWhile
+endFunction
+
+int function ArrayHasKeyWord(KeyWord[] akMyArray, KeyWord afMyKeyWord) global
+    ;Attempts to find the given form in the given array, and returns the index of the form if found.
+    ;-----------\
+    ;Description \	
+    ;----------------------------------------------------------------
+    ;Attempts to find the given form in the given array, and returns the index of the form if found.
+    ;-------------\
+    ;Return Values \
+    ;----------------------------------------------------------------
+    ;		-1		  =		Form not found
+    ;		int i		  =		Location of the form
+    int i = 0
+    while i < akMyArray.Length
+        if akMyArray[i] == afMyKeyWord
+            return i
+        else
+            i += 1
+        endif
+    endWhile
+    return -1
+endFunction
+
+int function ArrayTotalCountKeyword(Keyword[] akMyKeyword) global
+    ;Counts the number of indices in this array that do not have a "none" type.
+    ;-----------\
+    ;Description \	Author: Chesko
+    ;----------------------------------------------------------------
+    ;Counts the number of indices in this array that do not have a "none" type.
+    ;-------------\
+    ;Return Values \
+    ;----------------------------------------------------------------
+    ;		int myCount = number of indicies that are not "none"
+    int i = 0
+    int myCount = 0
+    while i < akMyKeyword.Length
+        if akMyKeyword[i] != none
+            myCount += 1
+            i += 1
+        else
+            i += 1
+        endif
+    endWhile
+    ;notification("MyCount = " + myCount)	
+    return myCount
+endFunction

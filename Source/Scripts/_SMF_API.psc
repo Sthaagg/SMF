@@ -80,7 +80,17 @@ Formlist Property _SMF_SafeAndUltraHealthyPlace Auto
 ; Ultra Safe / Ultra Healthy
 ; player home, temple
 ; a place where disease and filth is rare
-
+KeyWord[] property SupernaturalAndultraUnhealthyPlaceArray Auto hidden;Array filled with corresponding formlist for performance sake
+KeyWord[] property AbandonnedAndVeryUnhealthyPlaceArray Auto hidden;Array filled with corresponding formlist for performance sake
+KeyWord[] property CampAndHighUnhealthyPlaceArray Auto hidden;Array filled with corresponding formlist for performance sake
+KeyWord[] property CampAndAverageUnhealthyPlaceArray Auto hidden;Array filled with corresponding formlist for performance sake
+KeyWord[] property DwemerAndLowUnhealthyPlaceArray Auto hidden;Array filled with corresponding formlist for performance sake
+KeyWord[] property CaveAndLowUnhealthyPlaceArray Auto hidden;Array filled with corresponding formlist for performance sake
+KeyWord[] property LowPopulatedAndLowHealthyPlaceArray Auto hidden;Array filled with corresponding formlist for performance sake
+KeyWord[] property PopulatedSafeAndAverageHealthyArray Auto hidden;Array filled with corresponding formlist for performance sake
+KeyWord[] property SupernaturalAndHighHealthyArray Auto hidden;Array filled with corresponding formlist for performance sake
+KeyWord[] property PopulatedAndHighHealthyPlaceArray Auto hidden;Array filled with corresponding formlist for performance sake
+KeyWord[] property SafeAndUltraHealthyPlaceArray Auto hidden;Array filled with corresponding formlist for performance sake
 ;Required by _SMF_Utils Script
 FormList Property _SMF_FurnitureSit Auto
 
