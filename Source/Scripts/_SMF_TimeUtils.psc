@@ -15,7 +15,8 @@ Function PassTime(float afTimePassed) global
         return
     endif
 
-    float time = GetTimeStamp(1)
+    float time = SMF.GameHour.GetValue()
+    ;GetTimeStamp(1)
     time += afTimePassed
 
     int hour_passed = Math.floor(afTimePassed)

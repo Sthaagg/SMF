@@ -71,7 +71,7 @@ bool function IsCloseToWaterfall(Actor akActor) global;; Water falldetection is 
     return false
 endFunction
 
-bool function IsInWater(Actor akActor) global
+bool function IsInWater(Actor akActor, bool fastcheck = false) global
     _SMF_API SMF = GetAPI()
     if SMF == none
         RaiseSMFAPIError()
@@ -79,19 +79,22 @@ bool function IsInWater(Actor akActor) global
     endif
     ;Test if actor is in water
     bool result = false
-
-    Game.DisablePlayerControls(True, True, True, False, True, False, True) ; Disable all controls except looking.
-        
+    if !fastcheck
+        Game.DisablePlayerControls(True, True, True, False, True, False, True) ; Disable all controls except looking.
+    EndIf
     ; We spawn a fish and test if he can swim
     Actor Test = akActor.PlaceAtMe(SMF.WaterTestActor, 1, true, false) as Actor
     Test.SetAlpha(0.0)
     Test.MoveTo(akActor, 30.0 * Math.Sin(akActor.GetAngleZ()), 30.0 * Math.Cos(akActor.GetAngleZ()), 2.0)
     Test.SetAngle(0.0, 0.0, 0.0)
     result = (Test as Actor).IsSwimming() 
-    Test.Disable()
+    Test.DisableNoWait()
     Test.Delete()
-    
-    Game.EnablePlayerControls() ; Enable all controls
+
+    if !fastcheck
+        Game.EnablePlayerControls() ; Enable all controls
+    EndIf
+
     If result
         SMFDebugInfo("In Water")
     EndIf
