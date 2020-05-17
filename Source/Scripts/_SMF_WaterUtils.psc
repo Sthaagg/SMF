@@ -31,13 +31,12 @@ bool function IsCloseToWaterfall(Actor akActor) global;; Water falldetection is 
     
     Int i3 = SMF.iWfallAmbArray
     While i3 > 0
+        i3 -= 1
         ObjectReference ClosestWFallAmb = Game.FindClosestReferenceOfTypeFromRef(SMF._SMF_WFallAmbArray[i3] as form, akActor, 200.0)
         If ClosestWFallAmb
             i3 = 0
             SMFDebugInfo("Wfall Ambient:" + ClosestWFallAmb,2)
             return true
-        Else
-            i3 -= 1
         EndIf
     EndWhile
     If SMF.GeneralDebug
@@ -46,25 +45,23 @@ bool function IsCloseToWaterfall(Actor akActor) global;; Water falldetection is 
 
     Int i2 = SMF.iWfallBtomArray
     While i2 > 0
+        i2 -= 1
         ObjectReference ClosestWFallBtom = Game.FindClosestReferenceOfTypeFromRef(SMF._SMF_WFallBtomArray[i2] as form, akActor, 200.0)
         If ClosestWFallBtom
             i2 = 0
             SMFDebugInfo("Wfall Bottom:" + ClosestWFallBtom,2)
             return true
-        Else
-            i2 -= 1
         EndIf
     EndWhile
 
     Int i = SMF.iWfallTopArray
     While i > 0
+        i -= 1
         ObjectReference ClosestWFallTop = Game.FindClosestReferenceOfTypeFromRef(SMF._SMF_WFallTopArray[i] as form, akActor, 200.0)
         If ClosestWFallTop
             i = 0
             SMFDebugInfo("Wfall Top:" + ClosestWFallTop,2)
             return true
-        Else
-            i -= 1
         EndIf
     EndWhile
     
@@ -83,14 +80,17 @@ bool function IsInWater(Actor akActor, bool fastcheck = false) global
         Game.DisablePlayerControls(True, True, True, False, True, False, True) ; Disable all controls except looking.
     EndIf
     ; We spawn a fish and test if he can swim
-    Actor Test = akActor.PlaceAtMe(SMF.WaterTestActor, 1, true, false) as Actor
+    ObjectReference Marker = akActor.PlaceAtMe(SMF.Xmarker, 1, true, false)
+    float[] heading_pos = GetOffsets(akActor, 60, 180)
+    Marker.MoveTo(akActor, heading_pos[0], heading_pos[1])
+    Actor Test = Marker.PlaceAtMe(SMF.WaterTestActor, 1, true, false) as Actor
     Test.SetAlpha(0.0)
-    Test.MoveTo(akActor, 30.0 * Math.Sin(akActor.GetAngleZ()), 30.0 * Math.Cos(akActor.GetAngleZ()), 2.0)
     Test.SetAngle(0.0, 0.0, 0.0)
     result = (Test as Actor).IsSwimming() 
     Test.DisableNoWait()
     Test.Delete()
-
+    Marker.DisableNoWait()
+    Marker.Delete()
     if !fastcheck
         Game.EnablePlayerControls() ; Enable all controls
     EndIf

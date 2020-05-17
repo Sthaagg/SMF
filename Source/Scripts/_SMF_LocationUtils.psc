@@ -72,7 +72,10 @@ Bool Function IsInSupernaturalAndultraUnhealthyPlace() global
         RaiseSMFAPIError()
         return false
     endif
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Int idx = ArrayTotalCountKeyword(SMF.SupernaturalAndultraUnhealthyPlaceArray)
 
     While idx > 0
@@ -91,7 +94,10 @@ Bool Function IsInAbandonnedAndVeryUnhealthyPlace() global
         RaiseSMFAPIError()
         return false
     endif
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Int idx = ArrayTotalCountKeyword(SMF.AbandonnedAndVeryUnhealthyPlaceArray)
 
     While idx > 0
@@ -110,7 +116,10 @@ Bool Function IsInCampAndHighUnhealthyPlace() global
         RaiseSMFAPIError()
         return false
     endif
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Int idx = ArrayTotalCountKeyword(SMF.CampAndHighUnhealthyPlaceArray)
 
     While idx > 0
@@ -129,7 +138,10 @@ Bool Function IsInCampAndAverageUnhealthyPlace() global
         RaiseSMFAPIError()
         return false
     endif
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Int idx = ArrayTotalCountKeyword(SMF.CampAndAverageUnhealthyPlaceArray)
 
     While idx > 0
@@ -148,7 +160,10 @@ Bool Function IsInDwemerAndLowUnhealthyPlace() global
         RaiseSMFAPIError()
         return false
     endif
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Int idx = ArrayTotalCountKeyword(SMF.DwemerAndLowUnhealthyPlaceArray)
 
     While idx > 0
@@ -168,7 +183,10 @@ Bool Function IsInCaveAndLowUnhealthyPlace() global
         RaiseSMFAPIError()
         return false
     endif
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Int idx = ArrayTotalCountKeyword(SMF.CaveAndLowUnhealthyPlaceArray)
 
     While idx > 0
@@ -187,7 +205,10 @@ Bool Function IsInLowPopulatedAndLowHealthyPlace() global
         RaiseSMFAPIError()
         return false
     endif
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Int idx = ArrayTotalCountKeyword(SMF.LowPopulatedAndLowHealthyPlaceArray)
 
     While idx > 0
@@ -206,7 +227,10 @@ Bool Function IsInPopulatedSafeAndAverageHealthyPlace() global
         RaiseSMFAPIError()
         return false
     endif
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Int idx = ArrayTotalCountKeyword(SMF.PopulatedSafeAndAverageHealthyArray)
 
     While idx > 0
@@ -225,7 +249,10 @@ Bool Function IsInSupernaturalAndHighHealthyPlace() global
         RaiseSMFAPIError()
         return false
     endif
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Int idx = ArrayTotalCountKeyword(SMF.SupernaturalAndHighHealthyArray)
 
     While idx > 0
@@ -244,7 +271,10 @@ Bool Function IsInPopulatedAndHighHealthyPlace() global
         RaiseSMFAPIError()
         return false
     endif
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Int idx = ArrayTotalCountKeyword(SMF.PopulatedAndHighHealthyPlaceArray)
 
     While idx > 0
@@ -263,7 +293,10 @@ Bool Function IsInSafeAndUltraHealthyPlace() global
         RaiseSMFAPIError()
         return false
     endif
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Int idx = ArrayTotalCountKeyword(SMF.SafeAndUltraHealthyPlaceArray)
 
     While idx > 0
@@ -283,7 +316,10 @@ Bool Function IsInSupernaturalAndultraUnhealthyPlace() global
         return false
     endif
     return false
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Formlist KeywordList = SMF._SMF_SupernaturalAndultraUnhealthyPlace
 
     Int idx = KeywordList.GetSize()
@@ -303,7 +339,10 @@ Bool Function IsInAbandonnedAndVeryUnhealthyPlace() global
         return false
     endif
     return false
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Formlist KeywordList = SMF._SMF_AbandonnedAndVeryUnhealthyPlace
 
     Int idx = KeywordList.GetSize()
@@ -323,7 +362,10 @@ Bool Function IsInCampAndHighUnhealthyPlace() global
         return false
     endif
     return false
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Formlist KeywordList = SMF._SMF_CampAndHighUnhealthyPlace
 
     Int idx = KeywordList.GetSize()
@@ -343,7 +385,10 @@ Bool Function IsInCampAndAverageUnhealthyPlace() global
         return false
     endif
     return false
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Formlist KeywordList = SMF._SMF_CampAndAverageUnhealthyPlace
 
     Int idx = KeywordList.GetSize()
@@ -363,7 +408,10 @@ Bool Function IsInDwemerAndLowUnhealthyPlace() global
         return false
     endif
     return false
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Formlist KeywordList = SMF._SMF_DwemerAndLowUnhealthyPlace
 
     Int idx = KeywordList.GetSize()
@@ -383,7 +431,10 @@ Bool Function IsInCaveAndLowUnhealthyPlace() global
         return false
     endif
     return false
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Formlist KeywordList = SMF._SMF_CaveAndLowUnhealthyPlace
 
     Int idx = KeywordList.GetSize()
@@ -403,7 +454,10 @@ Bool Function IsInLowPopulatedAndLowHealthyPlace() global
         return false
     endif
     return false
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Formlist KeywordList = SMF._SMF_LowPopulatedAndLowHealthyPlace
 
     Int idx = KeywordList.GetSize()
@@ -423,7 +477,10 @@ Bool Function IsInPopulatedSafeAndAverageHealthyPlace() global
         return false
     endif
     return false
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Formlist KeywordList = SMF._SMF_PopulatedSafeAndAverageHealthyPlace
 
     Int idx = KeywordList.GetSize()
@@ -443,7 +500,10 @@ Bool Function IsInSupernaturalAndHighHealthyPlace() global
         return false
     endif
     return false
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Formlist KeywordList = SMF._SMF_SupernaturalAndHighHealthyPlace
 
     Int idx = KeywordList.GetSize()
@@ -463,7 +523,10 @@ Bool Function IsInPopulatedAndHighHealthyPlace() global
         return false
     endif
     return false
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Formlist KeywordList = SMF._SMF_PopulatedAndHighHealthyPlace
 
     Int idx = KeywordList.GetSize()
@@ -483,7 +546,10 @@ Bool Function IsInSafeAndUltraHealthyPlace() global
         return false
     endif
     return false
-    Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+        Location CurrentPlayerLocation = SMF.PlayerRef.GetCurrentLocation()
+    If !CurrentPlayerLocation
+        return false
+    EndIf
     Formlist KeywordList = SMF._SMF_SafeAndUltraHealthyPlace
 
     Int idx = KeywordList.GetSize()
