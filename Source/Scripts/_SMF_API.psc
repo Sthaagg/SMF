@@ -2,6 +2,7 @@ Scriptname _SMF_API extends Quest Hidden
 {Properties needed}
 Actor Property PlayerRef Auto
 Bool Property bIsFrostfallisLoaded = false Auto hidden
+Bool Property bIsCampingIsLoaded = false Auto hidden
 Int	Property _SMF_DLC1Detection = 0 Auto Hidden
 Int	Property _SMF_DLC2Detection = 0 Auto Hidden
 GlobalVariable Property Gamehour Auto
@@ -30,6 +31,7 @@ Form[] Property _SMFAutoTeamAliases Auto Hidden; Empty, Store teammates detected
 
 ;Required by _SMF_LocationUtils
 Bool Property bIsUnderShelter = False Auto hidden
+Bool Property bIsUnderCampfireTent = False Auto hidden
 Activator Property _SMF_ShelterDetector Auto
 Activator Property _SMF_ShelterDetectorSensor Auto
 Spell Property _SMF_ShelterDetectBeamFar Auto

@@ -76,12 +76,16 @@ bool function IsInWater(Actor akActor, bool fastcheck = false) global
     endif
     ;Test if actor is in water
     bool result = false
+    float afOffset
     if !fastcheck
         Game.DisablePlayerControls(True, True, True, False, True, False, True) ; Disable all controls except looking.
+        afOffset = 180
+    Else
+        afOffset = 0
     EndIf
     ; We spawn a fish and test if he can swim
     ObjectReference Marker = akActor.PlaceAtMe(SMF.Xmarker, 1, true, false)
-    float[] heading_pos = GetOffsets(akActor, 60, 180)
+    float[] heading_pos = GetOffsets(akActor, 60, afOffset)
     Marker.MoveTo(akActor, heading_pos[0], heading_pos[1])
     Actor Test = Marker.PlaceAtMe(SMF.WaterTestActor, 1, true, false) as Actor
     Test.SetAlpha(0.0)

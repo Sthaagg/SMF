@@ -22,15 +22,32 @@ function Moddetection()
     SMFDebugInfo(";=============== The following errors are normal ========================;",2)
     if SMF.bIsFrostfallisLoaded
         SMF.bIsFrostfallisLoaded = IsPluginLoaded(0x00064590, "Frostfall.esp")
+        SMF.bIsCampingIsLoaded = true
         if !SMF.bIsFrostfallisLoaded
-            ;Frostfall was removed since the last save.
+            SMFDebugInfo("Frostfall was removed since the last save.",2)
         endif
     else
         SMF.bIsFrostfallisLoaded = IsPluginLoaded(0x00064590, "Frostfall.esp")
         if SMF.bIsFrostfallisLoaded
-            ;Frostfall was just added.
+            SMF.bIsCampingIsLoaded = true
+            SMFDebugInfo("Frostfall was just added.",2)
         endif
     endif
+    if !SMF.bIsFrostfallisLoaded
+        If SMF.bIsCampingIsLoaded
+            SMF.bIsCampingIsLoaded = IsPluginLoaded(0x00022033, "Campfire.esm")
+            if !SMF.bIsCampingIsLoaded
+                SMFDebugInfo("Campfire was removed since the last save.",2)
+            endif
+            else
+            SMF.bIsCampingIsLoaded = IsPluginLoaded(0x00022033, "Campfire.esm")
+            if SMF.bIsCampingIsLoaded
+                SMFDebugInfo("Campfire was just added.",2)
+            endif
+        EndIf
+    Else
+        SMFDebugInfo("Frostfall used, Campfire compatibility added by default",2)
+    endif  
     SMFDebugInfo(";=============== Mod Detection End ======================================;",2)
     SMFDebugInfo(";=============== Compatibility Check Process End ========================;",2)
 EndFunction
