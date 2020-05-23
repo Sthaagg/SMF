@@ -122,3 +122,16 @@ function RaiseSMFAPIError() global
 	debug.trace("[SMF][ERROR] Fatal SMF API error occurred.")
 endFunction
 
+ObjectReference[] function ListObjectRefInCell(Int aiFormtype, ObjectReference akObject = None, Cell acCell = none) global
+	Cell kCell = acCell
+	If akObject
+	kCell = AkObject.GetParentCell()
+	EndIf
+Int iIndex = kCell.GetNumRefs(aiFormtype)
+ObjectReference[] objectReferencesList = new ObjectReference[100]
+while (iIndex)
+    iIndex -= 1
+    objectReferencesList[iIndex] = kCell.GetNthRef(iIndex, aiFormtype)
+endwhile
+	return objectReferencesList
+EndFunction
