@@ -26,6 +26,14 @@ Function Closemenu() global
     Game.EnablePlayerControls(False, False, False, False, False, True)	; Reenable menu	to let player open it again ;)
 EndFunction
 
+function ClosemenuAlt(string menu) global
+    Int TweenKey = Input.GetMappedKey("Tween Menu")
+    While UI.IsMenuOpen(menu)
+        utility.wait(0.1)
+        Input.TapKey(TweenKey)
+    Endwhile
+EndFunction
+
 Actor Function GetPlayerDialogueTarget() global
 ;Detecty which actor is currently talking to the player.
 ;Return Actor Ref
