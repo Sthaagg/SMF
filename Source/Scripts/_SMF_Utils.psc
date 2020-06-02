@@ -27,10 +27,10 @@ Function Closemenu() global
 EndFunction
 
 function ClosemenuAlt(string menu) global
-    Int TweenKey = Input.GetMappedKey("Tween Menu")
-    While UI.IsMenuOpen(menu)
-        utility.wait(0.1)
-        Input.TapKey(TweenKey)
+	Int TweenKey = Input.GetMappedKey("Tween Menu")
+    While !UI.IsMenuOpen(menu)
+		Input.TapKey(TweenKey)
+		utility.wait(0.1)
     Endwhile
 EndFunction
 

@@ -15,14 +15,14 @@ Function PassTime(float afTimePassed) global
         return
     endif
 
-    float time = SMF.GameHour.GetValue()
+    ;float time = SMF.GameHour.GetValue()
     ;GetTimeStamp(1)
-    time += afTimePassed
+    ;time += afTimePassed
 
     int hour_passed = Math.floor(afTimePassed)
     int minute_passed = Math.floor((afTimePassed - hour_passed) * 60)
     SMFDebugInfo("Time passed - " + hour_passed + " hour(s), " + minute_passed + " minute(s) (" + afTimePassed + ")")
-    SMF.GameHour.setValue(time)
+    SMF.GameHour.Mod(afTimePassed)
 EndFunction
 
 float function GetTimeStamp(int aiUnit) global
