@@ -28,10 +28,14 @@ EndFunction
 
 function ClosemenuAlt(string menu) global
 	Int TweenKey = Input.GetMappedKey("Tween Menu")
-    While !UI.IsMenuOpen(menu)
+	Input.TapKey(TweenKey)
+;/	SMFDebugInfo("Menu " + menu + " Status: " + UI.IsMenuOpen(menu))
+	While UI.IsMenuOpen(menu)
+		SMFDebugInfo("Menu " + menu + " Status: " + UI.IsMenuOpen(menu))
 		Input.TapKey(TweenKey)
 		utility.wait(0.1)
-    Endwhile
+	Endwhile
+/;
 EndFunction
 
 Actor Function GetPlayerDialogueTarget() global
