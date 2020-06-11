@@ -42,6 +42,7 @@ Function DetectShelter()
                     SMFDebugInfo("Campfire compatibility mode: Sheltered Tent detected",2)
                     SMF.bIsUnderShelter = true
                     SMF.bIsUnderCampfireTent = true
+                    SendModEvent("SMF_ShleterDetectionPerk","Tent")
                 Else
                     SMFDebugInfo("Campfire compatibility mode: No Sheltered Tent detected",2)
                     SMF.bIsUnderShelter = false
@@ -57,9 +58,11 @@ Function DetectShelter()
                 if IsTakingShelter.GetValueInt() == 2
                     SMF.bIsUnderShelter = true
                     SMFDebugInfo("Frostfall compatibility mode: Shelter detected",2)
+                    SendModEvent("SMF_ShleterDetectionPerk","Shelter")
                 ElseIf IsTakingShelter.GetValueInt() == 1
                     SMF.bIsUnderShelter = false
                     SMFDebugInfo("Frostfall compatibility mode:No Shelter detected",2)
+                    SendModEvent("SMF_ShleterDetectionPerk","NoShelter")
                 EndIf
             Else
                 ObjectReference Detector = SMF.PlayerRef.PlaceAtMe(SMF._SMF_ShelterDetector)
@@ -79,5 +82,6 @@ Function DetectShelter()
         EndIf
     Else
         SMF.bIsUnderShelter = false
+        SendModEvent("SMF_ShleterDetectionPerk","Interior")
     EndIf
 EndFunction

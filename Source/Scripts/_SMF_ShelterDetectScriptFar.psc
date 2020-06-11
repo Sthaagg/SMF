@@ -9,6 +9,7 @@ Event OnInit()
     float distance = self.GetDistance(SMF.PlayerRef)
     If distance > 1200
         SMF.bIsUnderShelter = false
+        SendModEvent("SMF_ShleterDetectionPerk","NoShelter")
         SMFDebugInfo( "IsUnderShelter: " + SMF.bIsUnderShelter + "(Dist: " + distance +") (Detector: " + self + ")",2)
     EndIf
     self.disable()
