@@ -147,3 +147,21 @@ while (iIndex)
 endwhile
 	return objectReferencesList
 EndFunction
+
+Float Function Max(Float limit, float value) global
+    {Returns the limit if value is out of range (superior)}
+	if (limit < value)
+    	Return limit
+    else
+        Return value
+	endif
+EndFunction
+
+Float Function Min(Float limit, float value) global
+    {Returns the limit if value is out of range (inferior)}
+	if (limit > value)
+    	Return limit
+    else
+        Return value
+	endif
+EndFunction
