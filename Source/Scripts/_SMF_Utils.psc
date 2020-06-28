@@ -20,27 +20,21 @@ Function SMFDebugInfo(String akText,Int aiMode = 1 ) global; aiMode 1 = notifica
 EndFunction
 
 Function Closemenu() global
-;Convenient function, Close menu properly
+	{Convenient function, Close menu properly by disabling / enabling payer control quickly}
     Game.DisablePlayerControls(False, False, False, False, False, True)	; Close menu
     Utility.Wait(0.01)
     Game.EnablePlayerControls(False, False, False, False, False, True)	; Reenable menu	to let player open it again ;)
 EndFunction
 
 function ClosemenuAlt(string menu) global
+	{alternate way to close menu like crafting or training}
 	Int TweenKey = Input.GetMappedKey("Tween Menu")
 	Input.TapKey(TweenKey)
-;/	SMFDebugInfo("Menu " + menu + " Status: " + UI.IsMenuOpen(menu))
-	While UI.IsMenuOpen(menu)
-		SMFDebugInfo("Menu " + menu + " Status: " + UI.IsMenuOpen(menu))
-		Input.TapKey(TweenKey)
-		utility.wait(0.1)
-	Endwhile
-/;
 EndFunction
 
 Actor Function GetPlayerDialogueTarget() global
-;Detecty which actor is currently talking to the player.
-;Return Actor Ref
+{Detecty which actor is currently talking to the player.
+Return Actor Ref}
 	_SMF_API SMF = GetAPI()
     if SMF == none
         RaiseSMFAPIError()
@@ -73,6 +67,7 @@ float[] function GetOffsets(Actor akSource, Float afDistance = 100.0, float afOf
 EndFunction
 
 float[] Function GetActorPosition(Actor akSource) global
+	{Returns an array which contains actor coordinates 0 = X, 1 = Y and 2 = Z}
 	float X = akSource.GetPositionX() as Float
 	float Y = akSource.GetPositionY() as Float
 	Float Z = akSource.GetPositionZ() as Float
@@ -85,8 +80,8 @@ float[] Function GetActorPosition(Actor akSource) global
 EndFunction
 
 bool Function ActorIsNearPlayer(Actor akActor) global
-;Detect if actor is in same cell as the playern and distance is inferior to 512 units
-;Return true
+{Detect if actor is in same cell as the playern and distance is inferior to 512 units
+Return true}
 	_SMF_API SMF = GetAPI()
     if SMF == none
         RaiseSMFAPIError()
@@ -112,8 +107,8 @@ bool Function ActorIsNearPlayer(Actor akActor) global
 endFunction
 
 Bool Function IsSitting(Actor akActor) global
-;Test if game considers that actor is sitting then check if he uses an appropriate furniture as game make no difference between leaning against a pole or sitting
-;Return true if ok, must be used in a variable
+{Test if game considers that actor is sitting then check if he uses an appropriate furniture as game make no difference between leaning against a pole or sitting
+Return True}
 	_SMF_API SMF = GetAPI()
     if SMF == none
         RaiseSMFAPIError()
@@ -135,6 +130,7 @@ function RaiseSMFAPIError() global
 endFunction
 
 ObjectReference[] function ListObjectRefInCell(Int aiFormtype, ObjectReference akObject = None, Cell acCell = none) global
+	{return an array from a cell, Uses akObject's parent cell or acCell if a cell is specified and akObject is empty }
 	Cell kCell = acCell
 	If akObject
 	kCell = AkObject.GetParentCell()
@@ -148,20 +144,20 @@ endwhile
 	return objectReferencesList
 EndFunction
 
-Float Function Max(Float limit, float value) global
-    {Returns the limit if value is out of range (superior)}
-	if (limit < value)
-    	Return limit
+Float Function Min(Float afA, float afB) global
+    {Returns the lowest value between afA & afB}
+	if (afA < afB)
+    	Return afA
     else
-        Return value
+        Return afB
 	endif
 EndFunction
 
-Float Function Min(Float limit, float value) global
-    {Returns the limit if value is out of range (inferior)}
-	if (limit > value)
-    	Return limit
+Float Function Max(Float afA, float afB) global
+    {Returns the highest value between afA & afB}
+	if (afA > afB)
+    	Return afA
     else
-        Return value
+        Return afB
 	endif
 EndFunction
