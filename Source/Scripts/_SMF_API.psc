@@ -93,6 +93,17 @@ KeyWord[] property PopulatedSafeAndAverageHealthyArray Auto hidden;Array filled 
 KeyWord[] property SupernaturalAndHighHealthyArray Auto hidden;Array filled with corresponding formlist for performance sake
 KeyWord[] property PopulatedAndHighHealthyPlaceArray Auto hidden;Array filled with corresponding formlist for performance sake
 KeyWord[] property SafeAndUltraHealthyPlaceArray Auto hidden;Array filled with corresponding formlist for performance sake
+Int Property iSupernaturalAndultraUnhealthyPlaceArray Auto Hidden; Store Array max size for performance sake, useful when you need a 'while' avoid to ount each time.
+Int Property iAbandonnedAndVeryUnhealthyPlaceArray Auto Hidden; Store Array max size for performance sake, useful when you need a 'while' avoid to ount each time.
+Int Property iCampAndHighUnhealthyPlaceArray Auto Hidden; Store Array max size for performance sake, useful when you need a 'while' avoid to ount each time.
+Int Property iCampAndAverageUnhealthyPlaceArray Auto Hidden; Store Array max size for performance sake, useful when you need a 'while' avoid to ount each time.
+Int Property iDwemerAndLowUnhealthyPlaceArray Auto Hidden; Store Array max size for performance sake, useful when you need a 'while' avoid to ount each time.
+Int Property iCaveAndLowUnhealthyPlaceArray Auto Hidden; Store Array max size for performance sake, useful when you need a 'while' avoid to ount each time.
+Int Property iLowPopulatedAndLowHealthyPlaceArray Auto Hidden; Store Array max size for performance sake, useful when you need a 'while' avoid to ount each time.
+Int Property iPopulatedSafeAndAverageHealthyArray Auto Hidden; Store Array max size for performance sake, useful when you need a 'while' avoid to ount each time.
+Int Property iSupernaturalAndHighHealthyArray Auto Hidden; Store Array max size for performance sake, useful when you need a 'while' avoid to ount each time.
+Int Property iPopulatedAndHighHealthyPlaceArray Auto Hidden; Store Array max size for performance sake, useful when you need a 'while' avoid to ount each time.
+Int Property iSafeAndUltraHealthyPlaceArray Auto Hidden; Store Array max size for performance sake, useful when you need a 'while' avoid to ount each time.
 ;Required by _SMF_Utils Script
 FormList Property _SMF_FurnitureSit Auto
 

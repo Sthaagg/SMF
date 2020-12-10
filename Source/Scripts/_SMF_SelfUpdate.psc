@@ -70,7 +70,7 @@ Function Maintenance()
             ArrayClearForm(SMF._SMF_WFallAmbArray)
             Int i1 = SMF._SMF_WFallAmb.Getsize()
             While i1 > 0
-                Form WfallForm = SMF._SMF_WFallAmb.GetAt(i1) as Form
+                Form WfallForm = SMF._SMF_WFallAmb.GetAt(i1 - 1) as Form
                 Bool AddingForm = ArrayAddForm(SMF._SMF_WFallAmbArray, WfallForm)
                 If Addingform
                     i1 -= 1
@@ -83,7 +83,7 @@ Function Maintenance()
             ArrayClearForm(SMF._SMF_WFallTopArray)
             Int i2 = SMF._SMF_WFallTop.Getsize()
             While i2 > 0
-                Form WfallForm = SMF._SMF_WFallTop.GetAt(i2) as Form
+                Form WfallForm = SMF._SMF_WFallTop.GetAt(i2 - 1) as Form
                 Bool AddingForm = ArrayAddForm(SMF._SMF_WFallTopArray, WfallForm)
                 If Addingform
                     i2 -= 1
@@ -96,7 +96,7 @@ Function Maintenance()
             ArrayClearForm(SMF._SMF_WFallBtomArray)
             Int i3 = SMF._SMF_WFallBtom.Getsize()
             While i3 > 0
-                Form WfallForm = SMF._SMF_WFallBtom.GetAt(i3) as Form
+                Form WfallForm = SMF._SMF_WFallBtom.GetAt(i3 - 1) as Form
                 Bool AddingForm = ArrayAddForm(SMF._SMF_WFallBtomArray, WfallForm)
                 If Addingform
                     i3 -= 1
@@ -112,7 +112,7 @@ Function Maintenance()
             SMF._SMF_DLC2Detection = 0
             Int i4 = SMF._SMF_AmmoList.Getsize()
             While i4 > 0
-                Form AmnoForm = SMF._SMF_AmmoList.GetAt(i4) as Form
+                Form AmnoForm = SMF._SMF_AmmoList.GetAt(i4 - 1) as Form
                 Bool AddingForm = ArrayAddForm(SMF._SMF_AmmoListArray, AmnoForm)
                 If Addingform
                     i4 -= 1
@@ -126,7 +126,7 @@ Function Maintenance()
             ArrayClearKeyword(SMF.SupernaturalAndultraUnhealthyPlaceArray)
             Int i5 = SMF._SMF_SupernaturalAndultraUnhealthyPlace.Getsize()
             While i5 > 0
-                KeyWord LocKwd = SMF._SMF_SupernaturalAndultraUnhealthyPlace.GetAt(i5) as Keyword
+                KeyWord LocKwd = SMF._SMF_SupernaturalAndultraUnhealthyPlace.GetAt(i5 - 1) as Keyword
                 Bool AddingKWD = ArrayAddKeyword(SMF.SupernaturalAndultraUnhealthyPlaceArray, LocKwd)
                 If AddingKWD
                     i5 -= 1
@@ -139,7 +139,7 @@ Function Maintenance()
             ArrayClearKeyword(SMF.AbandonnedAndVeryUnhealthyPlaceArray)
             Int i6 = SMF._SMF_AbandonnedAndVeryUnhealthyPlace.Getsize()
             While i6 > 0
-                KeyWord LocKwd = SMF._SMF_AbandonnedAndVeryUnhealthyPlace.GetAt(i6) as Keyword
+                KeyWord LocKwd = SMF._SMF_AbandonnedAndVeryUnhealthyPlace.GetAt(i6 - 1) as Keyword
                 Bool AddingKWD = ArrayAddKeyword(SMF.AbandonnedAndVeryUnhealthyPlaceArray, LocKwd)
                 If AddingKWD
                     i6 -= 1
@@ -152,7 +152,7 @@ Function Maintenance()
             ArrayClearKeyword(SMF.CampAndHighUnhealthyPlaceArray)
             Int i7 = SMF._SMF_CampAndHighUnhealthyPlace.Getsize()
             While i7 > 0
-                KeyWord LocKwd = SMF._SMF_CampAndHighUnhealthyPlace.GetAt(i7) as Keyword
+                KeyWord LocKwd = SMF._SMF_CampAndHighUnhealthyPlace.GetAt(i7 - 1) as Keyword
                 Bool AddingKWD = ArrayAddKeyword(SMF.CampAndHighUnhealthyPlaceArray, LocKwd)
                 If AddingKWD
                     i7 -= 1
@@ -165,7 +165,7 @@ Function Maintenance()
             ArrayClearKeyword(SMF.CampAndAverageUnhealthyPlaceArray)
             Int i8 = SMF._SMF_CampAndAverageUnhealthyPlace.Getsize()
             While i8 > 0
-                KeyWord LocKwd = SMF._SMF_CampAndAverageUnhealthyPlace.GetAt(i8) as Keyword
+                KeyWord LocKwd = SMF._SMF_CampAndAverageUnhealthyPlace.GetAt(i8 - 1) as Keyword
                 Bool AddingKWD = ArrayAddKeyword(SMF.CampAndAverageUnhealthyPlaceArray, LocKwd)
                 If AddingKWD
                     i8 -= 1
@@ -178,7 +178,7 @@ Function Maintenance()
             ArrayClearKeyword(SMF.DwemerAndLowUnhealthyPlaceArray)
             Int i9 = SMF._SMF_DwemerAndLowUnhealthyPlace.Getsize()
             While i9 > 0
-                KeyWord LocKwd = SMF._SMF_DwemerAndLowUnhealthyPlace.GetAt(i9) as Keyword
+                KeyWord LocKwd = SMF._SMF_DwemerAndLowUnhealthyPlace.GetAt(i9 - 1) as Keyword
                 Bool AddingKWD = ArrayAddKeyword(SMF.DwemerAndLowUnhealthyPlaceArray, LocKwd)
                 If AddingKWD
                     i9 -= 1
@@ -191,7 +191,7 @@ Function Maintenance()
             ArrayClearKeyword(SMF.CaveAndLowUnhealthyPlaceArray)
             Int i10 = SMF._SMF_CaveAndLowUnhealthyPlace.Getsize()
             While i10 > 0
-                KeyWord LocKwd = SMF._SMF_CaveAndLowUnhealthyPlace.GetAt(i10) as Keyword
+                KeyWord LocKwd = SMF._SMF_CaveAndLowUnhealthyPlace.GetAt(i10 - 1) as Keyword
                 Bool AddingKWD = ArrayAddKeyword(SMF.CaveAndLowUnhealthyPlaceArray, LocKwd)
                 If AddingKWD
                     i10 -= 1
@@ -204,7 +204,7 @@ Function Maintenance()
             ArrayClearKeyword(SMF.LowPopulatedAndLowHealthyPlaceArray)
             Int i11 = SMF._SMF_LowPopulatedAndLowHealthyPlace.Getsize()
             While i11 > 0
-                KeyWord LocKwd = SMF._SMF_LowPopulatedAndLowHealthyPlace.GetAt(i11) as Keyword
+                KeyWord LocKwd = SMF._SMF_LowPopulatedAndLowHealthyPlace.GetAt(i11 - 1) as Keyword
                 Bool AddingKWD = ArrayAddKeyword(SMF.LowPopulatedAndLowHealthyPlaceArray, LocKwd)
                 If AddingKWD
                     i11 -= 1
@@ -217,7 +217,7 @@ Function Maintenance()
             ArrayClearKeyword(SMF.PopulatedSafeAndAverageHealthyArray)
             Int i12 = SMF._SMF_PopulatedSafeAndAverageHealthyPlace.Getsize()
             While i12 > 0
-                KeyWord LocKwd = SMF._SMF_PopulatedSafeAndAverageHealthyPlace.GetAt(i12) as Keyword
+                KeyWord LocKwd = SMF._SMF_PopulatedSafeAndAverageHealthyPlace.GetAt(i12 - 1) as Keyword
                 Bool AddingKWD = ArrayAddKeyword(SMF.PopulatedSafeAndAverageHealthyArray, LocKwd)
                 If AddingKWD
                     i12 -= 1
@@ -230,7 +230,7 @@ Function Maintenance()
             ArrayClearKeyword(SMF.SupernaturalAndHighHealthyArray)
             Int i13 = SMF._SMF_SupernaturalAndHighHealthyPlace.Getsize()
             While i13 > 0
-                KeyWord LocKwd = SMF._SMF_SupernaturalAndHighHealthyPlace.GetAt(i13) as Keyword
+                KeyWord LocKwd = SMF._SMF_SupernaturalAndHighHealthyPlace.GetAt(i13 - 1) as Keyword
                 Bool AddingKWD = ArrayAddKeyword(SMF.SupernaturalAndHighHealthyArray, LocKwd)
                 If AddingKWD
                     i13 -= 1
@@ -243,7 +243,7 @@ Function Maintenance()
             ArrayClearKeyword(SMF.PopulatedAndHighHealthyPlaceArray)
             Int i14 = SMF._SMF_PopulatedAndHighHealthyPlace.Getsize()
             While i14 > 0
-                KeyWord LocKwd = SMF._SMF_PopulatedAndHighHealthyPlace.GetAt(i14) as Keyword
+                KeyWord LocKwd = SMF._SMF_PopulatedAndHighHealthyPlace.GetAt(i14 - 1) as Keyword
                 Bool AddingKWD = ArrayAddKeyword(SMF.PopulatedAndHighHealthyPlaceArray, LocKwd)
                 If AddingKWD
                     i14 -= 1
@@ -256,7 +256,7 @@ Function Maintenance()
             ArrayClearKeyword(SMF.SafeAndUltraHealthyPlaceArray)
             Int i15 = SMF._SMF_SafeAndUltraHealthyPlace.Getsize()
             While i15 > 0
-                KeyWord LocKwd = SMF._SMF_SafeAndUltraHealthyPlace.GetAt(i15) as Keyword
+                KeyWord LocKwd = SMF._SMF_SafeAndUltraHealthyPlace.GetAt(i15 - 1) as Keyword
                 Bool AddingKWD = ArrayAddKeyword(SMF.SafeAndUltraHealthyPlaceArray, LocKwd)
                 If AddingKWD
                     i15 -= 1
@@ -270,10 +270,32 @@ Function Maintenance()
             ArraySortForm(SMF._SMF_WFallBtomArray)
             ArraySortForm(SMF._SMF_WFallAmbArray)
             ArraySortForm(SMF._SMF_AmmoListArray)
-            ;We store array Max count to avoid calling counf function to often as following array are static
+            ArraySortKeyWord(SMF.SupernaturalAndultraUnhealthyPlaceArray)
+            ArraySortKeyWord(SMF.AbandonnedAndVeryUnhealthyPlaceArray)
+            ArraySortKeyWord(SMF.CampAndHighUnhealthyPlaceArray)
+            ArraySortKeyWord(SMF.CampAndAverageUnhealthyPlaceArray)
+            ArraySortKeyWord(SMF.DwemerAndLowUnhealthyPlaceArray)
+            ArraySortKeyWord(SMF.CaveAndLowUnhealthyPlaceArray)
+            ArraySortKeyWord(SMF.LowPopulatedAndLowHealthyPlaceArray)
+            ArraySortKeyWord(SMF.PopulatedSafeAndAverageHealthyArray)
+            ArraySortKeyWord(SMF.SupernaturalAndHighHealthyArray)
+            ArraySortKeyWord(SMF.PopulatedAndHighHealthyPlaceArray)
+            ArraySortKeyWord(SMF.SafeAndUltraHealthyPlaceArray)
+            ;We store array Max count to avoid calling count function to often as following array are static
             SMF.iWfallTopArray = ArrayTotalCountForm(SMF._SMF_WFallTopArray)
             SMF.iWfallBtomArray = ArrayTotalCountForm(SMF._SMF_WFallBtomArray)
             SMF.iWfallAmbArray = ArrayTotalCountForm(SMF._SMF_WFallAmbArray)  
+            SMF.iSupernaturalAndultraUnhealthyPlaceArray = ArrayTotalCountKeyword(SMF.SupernaturalAndultraUnhealthyPlaceArray)
+            SMF.iAbandonnedAndVeryUnhealthyPlaceArray = ArrayTotalCountKeyword(SMF.AbandonnedAndVeryUnhealthyPlaceArray)
+            SMF.iCampAndHighUnhealthyPlaceArray = ArrayTotalCountKeyword(SMF.CampAndHighUnhealthyPlaceArray)
+            SMF.iCampAndAverageUnhealthyPlaceArray = ArrayTotalCountKeyword(SMF.CampAndAverageUnhealthyPlaceArray)
+            SMF.iDwemerAndLowUnhealthyPlaceArray = ArrayTotalCountKeyword(SMF.DwemerAndLowUnhealthyPlaceArray)
+            SMF.iCaveAndLowUnhealthyPlaceArray = ArrayTotalCountKeyword(SMF.CaveAndLowUnhealthyPlaceArray)
+            SMF.iLowPopulatedAndLowHealthyPlaceArray = ArrayTotalCountKeyword(SMF.LowPopulatedAndLowHealthyPlaceArray)
+            SMF.iPopulatedSafeAndAverageHealthyArray = ArrayTotalCountKeyword(SMF.PopulatedSafeAndAverageHealthyArray)
+            SMF.iSupernaturalAndHighHealthyArray = ArrayTotalCountKeyword(SMF.SupernaturalAndHighHealthyArray)
+            SMF.iPopulatedAndHighHealthyPlaceArray = ArrayTotalCountKeyword(SMF.PopulatedAndHighHealthyPlaceArray)
+            SMF.iSafeAndUltraHealthyPlaceArray = ArrayTotalCountKeyword(SMF.SafeAndUltraHealthyPlaceArray)
             ;Needed code if MCM is updated
             ;int i5 = 0
             ;while !_bMCMready && i5 < 50

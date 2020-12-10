@@ -265,8 +265,7 @@ Bool Function EquipGear(Form[] akList, Form[] akListL) global
 	;-------Rest---------------------------------------------------
 	Int i = ArrayTotalCountForm(akList)
 	While (i > 0)
-		i -= 1
-		Form ListItem = akList[i]
+			Form ListItem = akList[i - 1]
 		If (ListItem)
 			PlayerRef.EquipItemEx(ListItem, 0, false, false)
 		EndIf

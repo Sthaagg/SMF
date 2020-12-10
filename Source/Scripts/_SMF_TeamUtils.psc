@@ -21,8 +21,7 @@ Function AutoDetectTeam(form[] akExlusionList) global
     int idx  = SMF._SMF_AutoDetectTeam.GetNumAliases()
     SMFDebugInfo("idx = "+ idx); for testing purpose
 	While idx > 0
-		idx -= 1
-		ReferenceAlias nthAlias = SMF._SMF_AutoDetectTeam.GetNthAlias(idx) as ReferenceAlias
+		ReferenceAlias nthAlias = SMF._SMF_AutoDetectTeam.GetNthAlias(idx - 1) as ReferenceAlias
         If nthAlias
 			Actor teammate = nthAlias.GetActorReference()
             AddActortoTeamList(teammate,SMF._SMFAutoTeamAliases,akExlusionList,1)

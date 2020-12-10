@@ -55,6 +55,8 @@ Int Function GetPlayerlocationType() global
         return 10
     ElseIf IsInSafeAndUltraHealthyPlace()
         return 11
+    Else
+        return 100 ;unknown location
     Endif
 EndFunction
 ;location classified by type
@@ -101,10 +103,11 @@ Bool Function IsInSupernaturalAndultraUnhealthyPlace() global
     If !CurrentPlayerLocation
         return false
     EndIf
-    Int idx = ArrayTotalCountKeyword(SMF.SupernaturalAndultraUnhealthyPlaceArray)
-
+    Int idx = (SMF.iSupernaturalAndultraUnhealthyPlaceArray)
+    SMFDebugInfo("Liste 1, Keyword count:" + idx,2)
     While idx > 0
-        Keyword Test = SMF.SupernaturalAndultraUnhealthyPlaceArray[idx]
+        Keyword Test = SMF.SupernaturalAndultraUnhealthyPlaceArray[idx - 1]
+        SMFDebugInfo("Tested keyword: " + Test,2)
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -123,10 +126,11 @@ Bool Function IsInAbandonnedAndVeryUnhealthyPlace() global
     If !CurrentPlayerLocation
         return false
     EndIf
-    Int idx = ArrayTotalCountKeyword(SMF.AbandonnedAndVeryUnhealthyPlaceArray)
-
+    Int idx = (SMF.iAbandonnedAndVeryUnhealthyPlaceArray)
+    SMFDebugInfo("Liste 2, Keyword count:" + idx,2)
     While idx > 0
-        Keyword Test = SMF.AbandonnedAndVeryUnhealthyPlaceArray[idx]
+        Keyword Test = SMF.AbandonnedAndVeryUnhealthyPlaceArray[idx - 1]
+        SMFDebugInfo("Tested keyword: " + Test,2)
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -145,10 +149,11 @@ Bool Function IsInCampAndHighUnhealthyPlace() global
     If !CurrentPlayerLocation
         return false
     EndIf
-    Int idx = ArrayTotalCountKeyword(SMF.CampAndHighUnhealthyPlaceArray)
-
+    Int idx = (SMF.iCampAndHighUnhealthyPlaceArray)
+    SMFDebugInfo("Liste 3, Keyword count:" + idx,2)
     While idx > 0
-        Keyword Test = SMF.CampAndHighUnhealthyPlaceArray[idx]
+        Keyword Test = SMF.CampAndHighUnhealthyPlaceArray[idx - 1]
+        SMFDebugInfo("Tested keyword: " + Test,2)
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -167,10 +172,11 @@ Bool Function IsInCampAndAverageUnhealthyPlace() global
     If !CurrentPlayerLocation
         return false
     EndIf
-    Int idx = ArrayTotalCountKeyword(SMF.CampAndAverageUnhealthyPlaceArray)
-
+    Int idx = (SMF.iCampAndAverageUnhealthyPlaceArray)
+    SMFDebugInfo("Liste 4, Keyword count:" + idx,2)
     While idx > 0
-        Keyword Test = SMF.CampAndAverageUnhealthyPlaceArray[idx]
+        Keyword Test = SMF.CampAndAverageUnhealthyPlaceArray[idx - 1]
+        SMFDebugInfo("Tested keyword: " + Test,2)
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -189,10 +195,11 @@ Bool Function IsInDwemerAndLowUnhealthyPlace() global
     If !CurrentPlayerLocation
         return false
     EndIf
-    Int idx = ArrayTotalCountKeyword(SMF.DwemerAndLowUnhealthyPlaceArray)
-
+    Int idx = (SMF.iDwemerAndLowUnhealthyPlaceArray)
+    SMFDebugInfo("Liste 5, Keyword count:" + idx,2)
     While idx > 0
-        Keyword Test = SMF.DwemerAndLowUnhealthyPlaceArray[idx]
+        Keyword Test = SMF.DwemerAndLowUnhealthyPlaceArray[idx - 1]
+        SMFDebugInfo("Tested keyword: " + Test,2)
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -212,10 +219,11 @@ Bool Function IsInCaveAndLowUnhealthyPlace() global
     If !CurrentPlayerLocation
         return false
     EndIf
-    Int idx = ArrayTotalCountKeyword(SMF.CaveAndLowUnhealthyPlaceArray)
-
+    Int idx = (SMF.iCaveAndLowUnhealthyPlaceArray)
+    SMFDebugInfo("Liste 6, Keyword count:" + idx,2)
     While idx > 0
-        Keyword Test = SMF.CaveAndLowUnhealthyPlaceArray[idx]
+        Keyword Test = SMF.CaveAndLowUnhealthyPlaceArray[idx - 1]
+        SMFDebugInfo("Tested keyword: " + Test,2)
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -234,10 +242,11 @@ Bool Function IsInLowPopulatedAndLowHealthyPlace() global
     If !CurrentPlayerLocation
         return false
     EndIf
-    Int idx = ArrayTotalCountKeyword(SMF.LowPopulatedAndLowHealthyPlaceArray)
-
+    Int idx = (SMF.iLowPopulatedAndLowHealthyPlaceArray)
+    SMFDebugInfo("Liste 7, Keyword count:" + idx,2)
     While idx > 0
-        Keyword Test = SMF.LowPopulatedAndLowHealthyPlaceArray[idx]
+        Keyword Test = SMF.LowPopulatedAndLowHealthyPlaceArray[idx - 1]
+        SMFDebugInfo("Tested keyword: " + Test,2)
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -256,10 +265,11 @@ Bool Function IsInPopulatedSafeAndAverageHealthyPlace() global
     If !CurrentPlayerLocation
         return false
     EndIf
-    Int idx = ArrayTotalCountKeyword(SMF.PopulatedSafeAndAverageHealthyArray)
-
+    Int idx = (SMF.iPopulatedSafeAndAverageHealthyArray)
+    SMFDebugInfo("Liste 8, Keyword count:" + idx,2)
     While idx > 0
-        Keyword Test = SMF.PopulatedSafeAndAverageHealthyArray[idx]
+        Keyword Test = SMF.PopulatedSafeAndAverageHealthyArray[idx - 1]
+        SMFDebugInfo("Tested keyword: " + Test,2)
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -278,10 +288,11 @@ Bool Function IsInSupernaturalAndHighHealthyPlace() global
     If !CurrentPlayerLocation
         return false
     EndIf
-    Int idx = ArrayTotalCountKeyword(SMF.SupernaturalAndHighHealthyArray)
-
+    Int idx = (SMF.iSupernaturalAndHighHealthyArray)
+    SMFDebugInfo("Liste 9, Keyword count:" + idx,2)
     While idx > 0
-        Keyword Test = SMF.SupernaturalAndHighHealthyArray[idx]
+        Keyword Test = SMF.SupernaturalAndHighHealthyArray[idx - 1]
+        SMFDebugInfo("Tested keyword: " + Test,2)
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -300,10 +311,11 @@ Bool Function IsInPopulatedAndHighHealthyPlace() global
     If !CurrentPlayerLocation
         return false
     EndIf
-    Int idx = ArrayTotalCountKeyword(SMF.PopulatedAndHighHealthyPlaceArray)
-
+    Int idx = (SMF.iPopulatedAndHighHealthyPlaceArray)
+    SMFDebugInfo("Liste 10, Keyword count:" + idx,2)
     While idx > 0
-        Keyword Test = SMF.PopulatedAndHighHealthyPlaceArray[idx]
+        Keyword Test = SMF.PopulatedAndHighHealthyPlaceArray[idx - 1]
+        SMFDebugInfo("Tested keyword: " + Test,2)
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
@@ -322,10 +334,11 @@ Bool Function IsInSafeAndUltraHealthyPlace() global
     If !CurrentPlayerLocation
         return false
     EndIf
-    Int idx = ArrayTotalCountKeyword(SMF.SafeAndUltraHealthyPlaceArray)
-
+    Int idx = (SMF.iSafeAndUltraHealthyPlaceArray)
+    SMFDebugInfo("Liste 11, Keyword count:" + idx,2)
     While idx > 0
-        Keyword Test = SMF.SafeAndUltraHealthyPlaceArray[idx]
+        Keyword Test = SMF.SafeAndUltraHealthyPlaceArray[idx - 1]
+        SMFDebugInfo("Tested keyword: " + Test,2)
         If CurrentPlayerLocation.HasKeyword(Test)
             return true
         EndIf
