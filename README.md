@@ -1,2 +1,4 @@
 # SMF
-Simple mod framework
+Sthaagg Memnochs Framework
+or
+Simple Mod Framework
