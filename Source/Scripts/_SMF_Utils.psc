@@ -1,7 +1,7 @@
 Scriptname _SMF_Utils  Hidden 
 
 _SMF_API function GetAPI() global
-	return (Game.GetFormFromFile(0xD61, "SMF.esl") as Quest) as _SMF_API
+	return (Game.GetFormFromFile(0xD61, "SMF.esp") as Quest) as _SMF_API
 endFunction
 
 Function SMFDebugInfo(String akText,Int aiMode = 1 ) global; aiMode 1 = notification (default mode), aiMode 2 = Trace

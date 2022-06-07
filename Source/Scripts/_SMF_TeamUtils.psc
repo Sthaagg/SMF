@@ -9,7 +9,7 @@ import _SMF_ArrayUtils
 
 Function AutoDetectTeam(form[] akExlusionList) global
     ;/  useful function for mod which manage follower and teammate, it is what I use in Better Facelight or Keep It Clean
-        This functiun get the alias from dedicated quest and store them in an Array, this one is hardcoded so it can be shared by any mod which use this function
+        This function get the alias from dedicated quest and store them in an Array, this one is hardcoded so it can be shared by any mod which use this function
         due to how follower/temamate are detected it will be a waste of ressource to use different array.
         Nothing to do except starting the dedicated quest _SMF_AutoDetectTeam
     /;
@@ -18,7 +18,7 @@ Function AutoDetectTeam(form[] akExlusionList) global
         RaiseSMFAPIError()
         return None
     endif  
-    int idx  = SMF._SMF_AutoDetectTeam.GetNumAliases()
+    int idx  = (SMF._SMF_AutoDetectTeam.GetNumAliases())
     SMFDebugInfo("idx = "+ idx); for testing purpose
 	While idx > 0
 		ReferenceAlias nthAlias = SMF._SMF_AutoDetectTeam.GetNthAlias(idx - 1) as ReferenceAlias
@@ -26,6 +26,7 @@ Function AutoDetectTeam(form[] akExlusionList) global
 			Actor teammate = nthAlias.GetActorReference()
             AddActortoTeamList(teammate,SMF._SMFAutoTeamAliases,akExlusionList,1)
         EndIf
+        idx -=1
     EndWhile
 EndFunction
 
@@ -67,4 +68,22 @@ Function ResetTeammateList(Form[] akClearedArray = none, Int aiMode = 2) global
     ElseIf aiMode == 2
         ArrayClearForm(akClearedArray)
     EndIf
+EndFunction
+
+Function RefillTeamQuestAlias() global
+    _SMF_API SMF = GetAPI()
+    if SMF == none
+        RaiseSMFAPIError()
+        return None
+    endif
+    If !SMF._SMF_AutoDetectTeam.IsStopped()
+        SMF._SMF_AutoDetectTeam.Reset()
+        SMF._SMF_AutoDetectTeam.Stop()
+        int i99 = 0
+        while !SMF._SMF_AutoDetectTeam.IsStopped() && i99 < 50
+            Utility.Wait(0.1)
+            i99 += 1
+        endWhile            
+    EndIf
+    SMF._SMF_AutoDetectTeam.Start()    
 EndFunction

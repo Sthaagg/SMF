@@ -49,6 +49,8 @@ Function Maintenance()
             _SMFSystem.Start()
             ;------Initializing Array--------------------------------------
             SMF._SMFAutoTeamAliases = new Form[10]
+            SMF._SMFForcedTeamAliases = new Form[10]
+            SMF._SMFTeamExcludedAliases = new Form[10]
             SMF._SMF_WFallTopArray = new Form[19]
             SMF._SMF_WFallBtomArray = new Form[16]
             SMF._SMF_WFallAmbArray = new Form[17]
@@ -308,7 +310,7 @@ Function Maintenance()
                 _SMF_AutoDetectTeam.Reset()
                 _SMF_AutoDetectTeam.Stop()
                 int i99 = 0
-                while !_SMFSystem.IsStopped() && i99 < 50
+                while !_SMF_AutoDetectTeam.IsStopped() && i99 < 50
                     Utility.Wait(0.1)
                     i99 += 1
                 endWhile            

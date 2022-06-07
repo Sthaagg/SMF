@@ -25,6 +25,9 @@ Armor Property JewelryRingGold Auto
 ;Required by _SMF_Teamutils Script
 Quest Property _SMF_AutoDetectTeam Auto
 Form[] Property _SMFAutoTeamAliases Auto Hidden; Empty, Store teammates detected by autodetect quest
+Form[] Property _SMFForcedTeamAliases Auto Hidden
+Form[] Property _SMFTeamExcludedAliases Auto Hidden
+Bool Property bEnableTeamSupport = false Auto Hidden
 ;Formlist Property _SMFForcedTeamAliases Auto ; Empty, Store manual added
 ;Formlist Property _SMFTeamExcludedAliases Auto ; Empty, Store NPCs which must be ignored
 
